@@ -113,15 +113,20 @@ class Park(Place):
     """
     
     def __init__(self, name, latitude, longitude, has_playground):
-        # TODO: Call the parent constructor
-        # TODO: Store has_playground as an attribute
-        pass
-    
+        super().__init__(name, latitude, longitude)
+        self.has_playground = has_playground
     # TODO: Override get_popup_text()
     # Should include playground info: "Playground: Yes/No"
+    def get_popup_text(self):
+        text = "No"
+        if self.has_playground:
+            text = "Yes"
+        return (f"<b>🌳 PARK: {self.name}</b><br>Playground: {text}")
     
     # TODO: Override get_marker_color()
     # Should return: "green"
+    def get_marker_color(self):
+        return "green"
 
 
 class Museum(Place):
