@@ -93,9 +93,13 @@ class Restaurant(Place):
     
     # TODO: Override get_popup_text()
     # Should return: "<b>RESTAURANT: name</b><br>Food: food_type"
+    def get_popup_text(self):
+        return (f"<b>RESTAURANT: {self.name}</b><br>Food: {self.food_type}")
     
     # TODO: Override get_marker_color()
     # Should return: "red"
+    def get_marker_color(self):
+        return "red"
 
 
 class Park(Place):
