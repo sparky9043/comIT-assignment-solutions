@@ -88,7 +88,7 @@ class Restaurant(Place):
     4. Override get_marker_color() - use "red" for restaurants
     """
     def __init__(self, name, latitude, longitude, food_type):
-        super().__init__(self, name, latitude, longitude)
+        super().__init__(name, latitude, longitude)
         self.food_type = food_type
     
     # TODO: Override get_popup_text()
