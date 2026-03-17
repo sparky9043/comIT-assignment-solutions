@@ -87,11 +87,9 @@ class Restaurant(Place):
     3. Override get_popup_text() to show restaurant info
     4. Override get_marker_color() - use "red" for restaurants
     """
-    
     def __init__(self, name, latitude, longitude, food_type):
-        # TODO: Call the parent constructor
-        # TODO: Store food_type as an attribute
-        pass
+        super().__init__(self, name, latitude, longitude)
+        self.food_type = food_type
     
     # TODO: Override get_popup_text()
     # Should return: "<b>RESTAURANT: name</b><br>Food: food_type"
