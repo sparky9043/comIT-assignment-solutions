@@ -164,7 +164,7 @@ class MyMap:
     This class ENCAPSULATES all map-related functionality
     """
     
-    def __init__(self, city, zoom=12):
+    def __init__(self, city: str, zoom=12):
         """Create a new map centered on a city"""
         self.city = city
         self.places = []  # List to store all our places
@@ -188,7 +188,7 @@ class MyMap:
         self.map = folium.Map(location=center, zoom_start=zoom)
         print(f"🗺️  Created map of {city}")
     
-    def add_place(self, place):
+    def add_place(self, place: Place):
         """
         Add a place to the map
         
