@@ -248,12 +248,18 @@ def create_my_places():
     # TODO: Add at least 2 restaurants
     # Example: Restaurant("Pizza Hut", 40.7128, -74.0060, "Italian")
     # restaurants = [...]
+    places.append(Restaurant("Chez Janou", 48.85692058124522, 2.3672090253505162, "French"))
+    places.append(Restaurant("La Felicita", 48.83525904408256, 2.370202370493764, "Italian"))
     
     # TODO: Add at least 2 parks
     # parks = [...]
+    places.append(Park("Franklin Roosevelt Park", 48.93011235468721, 2.2632694025222606, True))
+    places.append(Park("Parc Montsouris", 48.83302911244661, 2.3374271144582077, True))
     
     # TODO: Add at least 1 museum
     # museums = [...]
+    places.append(Museum("Bourdelle Museum", 48.8444662180575, 2.3190209052448734, 20))
+    places.append(Museum("National Museum of Natural History", 48.843675412963904, 2.3552414543617366, 15))
     
     # Combine all places
     # places.extend(restaurants)
