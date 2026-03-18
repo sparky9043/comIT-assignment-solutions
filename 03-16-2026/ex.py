@@ -121,7 +121,7 @@ class Park(Place):
         text = "No"
         if self.has_playground:
             text = "Yes"
-        return (f"<b>🌳 PARK: {self.name}</b><br>Playground: {text}")
+        return (f"<b>Park: {self.name}</b><br>Playground: {text}")
     
     # TODO: Override get_marker_color()
     # Should return: "green"
@@ -140,15 +140,19 @@ class Museum(Place):
     """
     
     def __init__(self, name, latitude, longitude, entry_fee):
-        # TODO: Call the parent constructor
-        # TODO: Store entry_fee as an attribute
-        pass
+        super().__init__(name, latitude, longitude)
+        self.entry_fee = entry_fee
     
     # TODO: Override get_popup_text()
     # Should include: "Entry: €X"
+    def get_popup_text(self):
+        return (f"<b>Museum: {self.name}</b><br>"
+                f"Entry: €{self.entry_fee}")
     
     # TODO: Override get_marker_color()
     # Should return: "purple"
+    def get_marker_color(self):
+        return "purple"
 
 
 # ============================================================================
