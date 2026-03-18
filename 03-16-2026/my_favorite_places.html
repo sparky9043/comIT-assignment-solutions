@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_318365a8e9ce5f0e25fa1f2d3786cdf5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_318365a8e9ce5f0e25fa1f2d3786cdf5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_318365a8e9ce5f0e25fa1f2d3786cdf5 = L.map(
+                "map_318365a8e9ce5f0e25fa1f2d3786cdf5",
+                {
+                    center: [48.8566, 2.3522],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4a3b13641beb66620b58c3e32fc9b86e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4a3b13641beb66620b58c3e32fc9b86e.addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var marker_87d6b5b562b196b0654122de49033e1f = L.marker(
+                [48.85692058124522, 2.3672090253505162],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_8ec51f21b5561f037576d09b51332c1e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d61d617e890dc49751562526c70c62c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_675765cf2731767bd1eae27e6ffd96af = $(`<div id="html_675765cf2731767bd1eae27e6ffd96af" style="width: 100.0%; height: 100.0%;"><b>RESTAURANT: Chez Janou</b><br>Food: French</div>`)[0];
+                popup_d61d617e890dc49751562526c70c62c3.setContent(html_675765cf2731767bd1eae27e6ffd96af);
+            
+        
+
+        marker_87d6b5b562b196b0654122de49033e1f.bindPopup(popup_d61d617e890dc49751562526c70c62c3)
+        ;
+
+        
+    
+    
+            marker_87d6b5b562b196b0654122de49033e1f.bindTooltip(
+                `<div>
+                     Chez Janou
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_87d6b5b562b196b0654122de49033e1f.setIcon(icon_8ec51f21b5561f037576d09b51332c1e);
+            
+    
+            var marker_46323e502298b48be11649bda0443ba2 = L.marker(
+                [48.83525904408256, 2.370202370493764],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_2ecd436295c1d1567ba10cf1d21884a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aec6d130b484d2186fe7d5d968e7f613 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3ccdfd56d7facd5cfbb3ff88670fc74 = $(`<div id="html_f3ccdfd56d7facd5cfbb3ff88670fc74" style="width: 100.0%; height: 100.0%;"><b>RESTAURANT: La Felicita</b><br>Food: Italian</div>`)[0];
+                popup_aec6d130b484d2186fe7d5d968e7f613.setContent(html_f3ccdfd56d7facd5cfbb3ff88670fc74);
+            
+        
+
+        marker_46323e502298b48be11649bda0443ba2.bindPopup(popup_aec6d130b484d2186fe7d5d968e7f613)
+        ;
+
+        
+    
+    
+            marker_46323e502298b48be11649bda0443ba2.bindTooltip(
+                `<div>
+                     La Felicita
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46323e502298b48be11649bda0443ba2.setIcon(icon_2ecd436295c1d1567ba10cf1d21884a2);
+            
+    
+            var marker_073052f51fcc01acf8486d264ae1908d = L.marker(
+                [48.93011235468721, 2.2632694025222606],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_bd588d7a003d2c7b5270422076bdd297 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7914d60fe1bf10e4297510a61b571d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_542e1674449c508caf51984dfa174f48 = $(`<div id="html_542e1674449c508caf51984dfa174f48" style="width: 100.0%; height: 100.0%;"><b>Park: Franklin Roosevelt Park</b><br>Playground: Yes</div>`)[0];
+                popup_e7914d60fe1bf10e4297510a61b571d9.setContent(html_542e1674449c508caf51984dfa174f48);
+            
+        
+
+        marker_073052f51fcc01acf8486d264ae1908d.bindPopup(popup_e7914d60fe1bf10e4297510a61b571d9)
+        ;
+
+        
+    
+    
+            marker_073052f51fcc01acf8486d264ae1908d.bindTooltip(
+                `<div>
+                     Franklin Roosevelt Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_073052f51fcc01acf8486d264ae1908d.setIcon(icon_bd588d7a003d2c7b5270422076bdd297);
+            
+    
+            var marker_db808f25d1b5445b8063310068fc2e19 = L.marker(
+                [48.83302911244661, 2.3374271144582077],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_421a55f25fa526b43201ec87232acf6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_897d1cadbbbb1762fd0532ba1a82fd88 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d0db9eb4e855a27015f41c994f9af9b = $(`<div id="html_6d0db9eb4e855a27015f41c994f9af9b" style="width: 100.0%; height: 100.0%;"><b>Park: Parc Montsouris</b><br>Playground: Yes</div>`)[0];
+                popup_897d1cadbbbb1762fd0532ba1a82fd88.setContent(html_6d0db9eb4e855a27015f41c994f9af9b);
+            
+        
+
+        marker_db808f25d1b5445b8063310068fc2e19.bindPopup(popup_897d1cadbbbb1762fd0532ba1a82fd88)
+        ;
+
+        
+    
+    
+            marker_db808f25d1b5445b8063310068fc2e19.bindTooltip(
+                `<div>
+                     Parc Montsouris
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db808f25d1b5445b8063310068fc2e19.setIcon(icon_421a55f25fa526b43201ec87232acf6c);
+            
+    
+            var marker_ee2834245e612bf065a12c2f5dd6368a = L.marker(
+                [48.8444662180575, 2.3190209052448734],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_762a47624e16d84e232a431f00c56fc3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_edad807dfbd4681d8edeb3149fddbda1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b660e6bd2fb7c62163857dfb885e9f9 = $(`<div id="html_1b660e6bd2fb7c62163857dfb885e9f9" style="width: 100.0%; height: 100.0%;"><b>Museum: Bourdelle Museum</b><br>Entry: €20</div>`)[0];
+                popup_edad807dfbd4681d8edeb3149fddbda1.setContent(html_1b660e6bd2fb7c62163857dfb885e9f9);
+            
+        
+
+        marker_ee2834245e612bf065a12c2f5dd6368a.bindPopup(popup_edad807dfbd4681d8edeb3149fddbda1)
+        ;
+
+        
+    
+    
+            marker_ee2834245e612bf065a12c2f5dd6368a.bindTooltip(
+                `<div>
+                     Bourdelle Museum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ee2834245e612bf065a12c2f5dd6368a.setIcon(icon_762a47624e16d84e232a431f00c56fc3);
+            
+    
+            var marker_ac0dbc51d0622f762953d182c6951fda = L.marker(
+                [48.843675412963904, 2.3552414543617366],
+                {
+}
+            ).addTo(map_318365a8e9ce5f0e25fa1f2d3786cdf5);
+        
+    
+            var icon_e9d57740636b3e1b939ed858eca693bf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b34ad8d625284626aa671b19645a811a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a166ddb02beafdd95d8a6b84edd41d0a = $(`<div id="html_a166ddb02beafdd95d8a6b84edd41d0a" style="width: 100.0%; height: 100.0%;"><b>Museum: National Museum of Natural History</b><br>Entry: €15</div>`)[0];
+                popup_b34ad8d625284626aa671b19645a811a.setContent(html_a166ddb02beafdd95d8a6b84edd41d0a);
+            
+        
+
+        marker_ac0dbc51d0622f762953d182c6951fda.bindPopup(popup_b34ad8d625284626aa671b19645a811a)
+        ;
+
+        
+    
+    
+            marker_ac0dbc51d0622f762953d182c6951fda.bindTooltip(
+                `<div>
+                     National Museum of Natural History
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ac0dbc51d0622f762953d182c6951fda.setIcon(icon_e9d57740636b3e1b939ed858eca693bf);
+            
+</script>
+</html>

@@ -291,22 +291,22 @@ def main():
     mymap = MyMap(my_city)
     
     # TODO 2: Get your places
-    # my_places = create_my_places()
+    my_places = create_my_places()
     
     # For now, let's use some sample places (replace with your own!)
-    print("\n📝 Using sample places (TODO: Replace with your favorites!)")
-    
     # Create some sample places
-    eiffel_tower = Place("Eiffel Tower", 48.8584, 2.2945)
-    louvre = Museum("Louvre Museum", 48.8606, 2.3376, 17)
-    cafe = Restaurant("Cafe Paris", 48.8566, 2.3522, "French")
-    park = Park("Luxembourg Garden", 48.8462, 2.3372, True)
+    # eiffel_tower = Place("Eiffel Tower", 48.8584, 2.2945)
+    # louvre = Museum("Louvre Museum", 48.8606, 2.3376, 17)
+    # cafe = Restaurant("Cafe Paris", 48.8566, 2.3522, "French")
+    # park = Park("Luxembourg Garden", 48.8462, 2.3372, True)
     
     # TODO 3: Add all places to the map
-    mymap.add_place(eiffel_tower)
-    mymap.add_place(louvre)
-    mymap.add_place(cafe)
-    mymap.add_place(park)
+    # mymap.add_place(eiffel_tower)
+    # mymap.add_place(louvre)
+    # mymap.add_place(cafe)
+    # mymap.add_place(park)
+    for place in my_places:
+        mymap.add_place(place)
     
     # TODO 4: Show distances between places
     mymap.show_distances()
