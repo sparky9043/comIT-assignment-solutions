@@ -99,18 +99,99 @@ class Cafe:
 
         print(f" TOTAL {"$ " + f"{total:.2f}":>41}")
         
-my_cafe = Cafe('Starbucks Cafe')
-my_cafe.add_to_menu(latte)
-my_cafe.add_to_menu(french_vanilla)
-my_cafe.add_to_menu(hazelnut)
+cafe = Cafe("Sunny Bean Café", tax_rate=0.08)
 
-my_cafe.add_order(french_vanilla, "medium")
-my_cafe.add_order(french_vanilla, "large")
-my_cafe.add_order(latte, "small")
-my_cafe.add_order(latte, "medium")
+# Create Coffee objects and add them to the menu
+cafe.add_to_menu(Coffee("Espresso",    "Strong and bold shot of coffee",           2.50))
+cafe.add_to_menu(Coffee("Americano",   "Espresso diluted with hot water",          3.00))
+cafe.add_to_menu(Coffee("Cappuccino",  "Equal parts espresso, foam, and milk",     3.75))
+cafe.add_to_menu(Coffee("Latte",       "Creamy espresso with lots of steamed milk",3.50))
+cafe.add_to_menu(Coffee("Flat White",  "Velvety milk with a double espresso shot", 4.00))
+cafe.add_to_menu(Coffee("Macchiato",   "Espresso 'stained' with a touch of foam",  3.25))
+cafe.add_to_menu(Coffee("Mocha",       "Espresso with chocolate and steamed milk", 4.25))
+cafe.add_to_menu(Coffee("Cold Brew",   "Slow-steeped coffee served cold",          4.00))
 
-# print(my_cafe.calculate_subtotal())
-my_cafe.print_bill(15)
+SIZES = ["small", "medium", "large"]
 
-# my_cafe.display_menu()
-# my_cafe.display_sizes()
+print(f"\nWelcome to {cafe.name}! ☕")
+
+while True:
+    print("\n" + "="*40)
+    print("What would you like to do?")
+    print("1. View menu and order a drink")
+    print("2. View current order")
+    print("3. Checkout and pay")
+    print("="*40)
+
+    choice = input("Enter your choice (1/2/3): ").strip()
+
+    if choice == "1":
+        # Show menu
+        cafe.display_menu()
+
+        # Ask the customer to pick a drink (validate input!)
+        drink_input = input("\nEnter the number of the drink you want (or 0 to cancel): ").strip()
+
+        if drink_input == "0":
+            continue   # go back to the top of the while loop
+
+        # Check that the input is a valid number
+        if not drink_input.isdigit():
+            print("❌ Please enter a number.")
+            continue
+
+        drink_index = int(drink_input) - 1   # subtract 1 because lists start at 0
+
+        if drink_index < 0 or drink_index >= len(cafe.menu):
+            print("❌ That number is not on the menu. Try again.")
+            continue
+
+        selected_coffee = cafe.menu[drink_index]
+
+        # Show sizes
+        cafe.display_sizes()
+        size_input = input("Enter the number of the size you want: ").strip()
+
+        if not size_input.isdigit():
+            print("❌ Please enter a number.")
+            continue
+
+        size_index = int(size_input) - 1
+
+        if size_index < 0 or size_index >= len(SIZES):
+            print("❌ Invalid size. Try again.")
+            continue
+
+        selected_size = SIZES[size_index]
+
+        # Add the order
+        cafe.add_order(selected_coffee, selected_size)
+
+    elif choice == "2":
+        if not cafe.orders:
+            print("\n🛒 Your order is empty.")
+        else:
+            print("\n--- Your Current Order ---")
+            for i, order in enumerate(cafe.orders, start=1):
+                print(f"  {i}. {order}")
+            print(f"  Subtotal so far: ${cafe.calculate_subtotal():.2f}")
+
+    elif choice == "3":
+        if not cafe.orders:
+            print("\n❌ You have not ordered anything yet!")
+            continue
+
+        # Ask for tip percentage
+        print("\nHow much would you like to tip?")
+        print("1. 10%    2. 15%    3. 20%    4. No tip")
+        tip_choice = input("Enter your choice (1/2/3/4): ").strip()
+
+        tip_map = {"1": 10, "2": 15, "3": 20, "4": 0}
+        tip_percent = tip_map.get(tip_choice, 0)
+
+        cafe.print_bill(tip_percent)
+        print("\nThank you for visiting! Have a great day! ☕\n")
+        break   # Exit the while loop — we are done!
+
+    else:
+        print("❌ Invalid choice. Please enter 1, 2, or 3.")
