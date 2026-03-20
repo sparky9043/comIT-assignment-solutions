@@ -65,8 +65,8 @@ class Cafe:
         sizes = { "small": 0, "medium": 0.50, "large": 1 }
         
         print("==== Sizes available ===")
-        for size, price in sizes.items():
-            print(f"{size.title():<10} +${price:.2f}")
+        for index, size in enumerate(sizes):
+            print(f"{index + 1}. {size.title():<10} +${sizes[size]:.2f}")
             
     def add_order(self, coffee, size):
         new_order = Order(coffee, size)
