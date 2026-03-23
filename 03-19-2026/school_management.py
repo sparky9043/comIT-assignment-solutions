@@ -195,6 +195,12 @@ class School:
     def list_all_students(self):
         if not self.students_list:
             print(f"There are no students in enrolled in {self.school_name}")
+        else:
+            print("=" * 50)
+            print(f"Students at {self.school_name}")
+            print("=" * 50)
+            for index, student in enumerate(self.students_list):
+                print(f"{index + 1}) {student}")
     
     # ---------- CLASS MANAGEMENT ----------
     
