@@ -464,9 +464,10 @@ def main():
         
         response = int(response)
         
-        # App Behavior depending on Response
-        # - View class grades
-        # - Calculate student average
+        if not 1 <= response <= 9:
+            print_title("=== ERROR: Response must be between 1 and 9 ===")
+            wait_for_user()
+            continue
         
         # List all students
         if response == 1:
