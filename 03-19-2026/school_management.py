@@ -305,10 +305,17 @@ class School:
                     print(grade)
     
     def calculate_student_average(self, student_id):
+        student = student_id
         # TODO: Calculate and display average grade for a student
         # Return the average or None if no grades
         # YOUR CODE HERE
-        pass
+        if student:
+            grades = []
+            for grade in self.grades_list:
+                if grade.student.student_id == student_id:
+                    grades.append(grade)
+                    
+        return sum(grade.score for grade in grades) // len(grades) if grades else None
 
 
 # ============================================
@@ -368,6 +375,8 @@ def main():
     
     hogwarts.list_grades_for_class(2009)
     hogwarts.list_grades_for_student(1010)
+    
+    print(hogwarts.calculate_student_average(1001))
     
     # TODO: Create your school
     # school = School("Your School Name")
