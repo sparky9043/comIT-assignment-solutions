@@ -248,8 +248,10 @@ class School:
             print_divider()
             print_center(f"Classes at {self.school_name}")
             print_divider()
+            print(f"{"Class ID":^10} | {"Class Name":^30} | {"Instructor":^30}")
+            print_divider('-')
             for classroom in self.classes_list:
-                print(f"Class: {classroom.class_name} | Instructor: {classroom.teacher}")
+                print(f"{classroom.class_id:^10} | {classroom.class_name:<30} | {classroom.teacher:<30}")
     
     # ---------- ENROLLMENT MANAGEMENT ----------
     
@@ -449,7 +451,9 @@ def main():
         elif response == 2:
             hogwarts.list_all_classes()
             print_divider()
-        input('Press enter to continue...')
+        
+        print()
+        input('Press enter to continue...\n')
             
     
     # HINT: Use a while loop and if/elif statements for the menu
