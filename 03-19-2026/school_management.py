@@ -310,9 +310,14 @@ def main():
     
     hogwarts = School('Hogwarts')
     
-    hogwarts.add_student(1001, 'Harry Potter', 9)
-    hogwarts.add_student(1002, 'Hermione Granger', 9)
-    hogwarts.add_student(1003, 'Ron Weasly', 9)
+    hogwarts.add_student(1001, 'Harry Potter', 10)
+    hogwarts.add_student(1002, 'Hermione Granger', 10)
+    hogwarts.add_student(1003, 'Ron Weasly', 10)
+    hogwarts.add_student(1004, 'Neville Longbottom', 10)
+    hogwarts.add_student(1005, 'Ginny Weasley', 9)
+    hogwarts.add_student(1006, 'Draco Malfoy', 11)
+    hogwarts.add_student(1007, 'Dean Thomas', 12)
+    hogwarts.add_student(1008, 'George Weasly', 12)
     
     print(hogwarts.find_student(1001))
     print(hogwarts.find_student(1002))
@@ -324,7 +329,16 @@ def main():
     hogwarts.list_all_classes()
     
     hogwarts.enroll_student_in_class(1001, 2001)
-    hogwarts.enroll_student_in_class(1001, 2001)
+    hogwarts.enroll_student_in_class(1001, 2002)
+    hogwarts.enroll_student_in_class(1002, 2001)
+    hogwarts.enroll_student_in_class(1003, 2001)
+    hogwarts.enroll_student_in_class(1004, 2001)
+    hogwarts.enroll_student_in_class(1005, 2002)
+    hogwarts.enroll_student_in_class(1006, 2002)
+    hogwarts.enroll_student_in_class(1006, 2002)
+    
+    hogwarts.list_all_students()
+    hogwarts.list_all_classes()
     
     # TODO: Create your school
     # school = School("Your School Name")
