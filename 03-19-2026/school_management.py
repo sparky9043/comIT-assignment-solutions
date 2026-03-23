@@ -53,6 +53,7 @@ class Class:
         self.class_id = class_id
         self.class_name = class_name
         self.teacher = teacher
+        self.enrolled_students = []
     
     def add_student(self, student):
         # TODO: Add a student to the enrolled_students list
