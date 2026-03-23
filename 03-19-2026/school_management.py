@@ -183,14 +183,14 @@ class School:
         else:
             student = Student(student_id, name, grade_level)
             self.students_list.append(student)
-            print(f"New Student Added: {student}")
             return student
     
     def find_student(self, student_id):
-        # TODO: Find and return a student by ID
-        # Return None if not found
-        # YOUR CODE HERE
-        pass
+        for student in self.students_list:
+            if student_id == student.student_id:
+                return student
+        print(f"Student ID {student_id} not found")
+        return None
     
     def list_all_students(self):
         # TODO: Display all students in the school
@@ -278,9 +278,11 @@ def main():
     hogwarts = School('Hogwarts')
     
     hogwarts.add_student(1001, 'Harry Potter', 9)
-    hogwarts.add_student(1001, 'Harry Potter', 9)
-    hogwarts.add_student(1001, 'Harry Potter', 9)
+    hogwarts.add_student(1002, 'Hermione Granger', 9)
+    hogwarts.add_student(1003, 'Ron Weasly', 9)
     
+    print(hogwarts.find_student(1001))
+    print(hogwarts.find_student(1002))
     
     # TODO: Create your school
     # school = School("Your School Name")
