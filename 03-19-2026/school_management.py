@@ -59,8 +59,10 @@ class Class:
         """Add student to Class object's enrolled students list if
         it's an instance of Student Class
         """
-        if isinstance(student, Student):
-            self.enrolled_students.append(student)
+        if not isinstance(student, Student):
+            raise TypeError("You can only add Student objects to class")
+        self.enrolled_students.append(student)
+
     
     def remove_student(self, student):
         # TODO: Remove a student from the enrolled_students list
