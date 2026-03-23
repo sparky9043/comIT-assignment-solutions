@@ -65,11 +65,14 @@ class Class:
 
     
     def remove_student(self, student):
-        # TODO: Remove a student from the enrolled_students list
-        # Check if student exists before removing
-        # Print appropriate messages
-        # YOUR CODE HERE
-        pass
+        """
+        Remove a student from class
+        """
+        if student in self.enrolled_students:
+            self.enrolled_students.remove(student)
+            print(f"{student.name} removed from {self.class_name}")
+        else:
+            print(f"{student.name} is not enrolled in {self.class_name}")
     
     def list_students(self):
         # TODO: Display all students enrolled in this class
@@ -82,7 +85,18 @@ class Class:
         # Include class ID, name, teacher, and number of students
         # YOUR CODE HERE
         pass
+    
+jerry = Student(1001, "Jerry", 9)
+mary = Student(1002, "Mary", 10)
+shelly = Student(1003, "Shelly", 12)
 
+biology = Class(2001, "Biology", "Mr. Roberts")
+
+biology.add_student(jerry)
+biology.add_student(mary)
+biology.add_student(shelly)
+
+biology.remove_student("hello")
 
 # ============================================
 # STEP 3: GRADE CLASS
