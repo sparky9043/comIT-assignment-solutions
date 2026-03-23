@@ -15,14 +15,14 @@ class Student:
     A class representing a student
     
     Attributes:
-        student_id (int): Random 6 digit student ID
+        student_id (int): 4 digit student ID starting with 1
         name (str): student name
         grade_level (number): student grade level (9-12)
     """
     
-    def __init__(self, name, grade_level):
-        """Initialize Student with student_id, name, grade_level"""
-        self.student_id = random.randint(100000, 999999)
+    def __init__(self, name, student_id, grade_level):
+        """Initialize Student with student_id (4 digits), name, grade_level"""
+        self.student_id = student_id
         self.name = name
         self.grade_level = grade_level
     
@@ -49,9 +49,9 @@ class Class:
         teacher (str): name of the teacher in charge
     """
     
-    def __init__(self, class_name, teacher):
+    def __init__(self, class_id, class_name, teacher):
         """Initialize Class with class_id, class_name, and teacher"""
-        self.class_id = random.randint(1000, 9999)
+        self.class_id = class_id
         self.class_name = class_name
         self.teacher = teacher
         self.enrolled_students = []
@@ -107,10 +107,11 @@ class Grade:
     3. Create a method to display grade information
     """
     
-    def __init__(self, grade_id, student, class_obj, score):
-        # TODO: Initialize all attributes
-        # YOUR CODE HERE
-        pass
+    def __init__(self, grade_id, student: Student, class_obj: Class, score: int):
+        self.grade_id = grade_id
+        self.student = student
+        self.class_obj = class_obj
+        self.score = score
     
     def get_letter_grade(self):
         """
@@ -122,21 +123,32 @@ class Grade:
         60-69: D
         Below 60: F
         """
-        # TODO: Return the appropriate letter grade based on self.score
-        # YOUR CODE HERE
-        pass
+        if self.score >= 90:
+            return "A"
+        elif self.score >= 80:
+            return "B"
+        elif self.score >= 70:
+            return "C"
+        elif self.score >= 60:
+            return "D"
+        else:
+            return "F"
     
     def display_grade(self):
         # TODO: Print grade information including letter grade
         # Example: "Grade ID: 301 | Student: Alice | Class: Math | Score: 95 | Letter: A"
         # YOUR CODE HERE
-        pass
+        print(f"Grade ID: {self.grade_id} | Student: {self.student.name} | "
+              f"Class: {self.class_obj.class_name} | Score: {self.score} | "
+              f"Letter: {self.get_letter_grade()}")
     
     def __str__(self):
         # TODO: Return string representation of the grade
         # Include letter grade in the string
         # YOUR CODE HERE
-        pass
+        return (f"Grade(ID: {self.grade_id}; Student: {self.student.name};"
+                f"Class: {self.class_obj.class_name}, Score: {self.score};"
+                f"Letter: {self.get_letter_grade()})")
 
 
 # ============================================
