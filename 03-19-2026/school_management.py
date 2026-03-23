@@ -193,10 +193,8 @@ class School:
         return None
     
     def list_all_students(self):
-        # TODO: Display all students in the school
-        # Handle empty list case
-        # YOUR CODE HERE
-        pass
+        if not self.students_list:
+            print(f"There are no students in enrolled in {self.school_name}")
     
     # ---------- CLASS MANAGEMENT ----------
     
@@ -283,6 +281,8 @@ def main():
     
     print(hogwarts.find_student(1001))
     print(hogwarts.find_student(1002))
+    
+    hogwarts.list_all_students()
     
     # TODO: Create your school
     # school = School("Your School Name")
