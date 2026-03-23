@@ -8,20 +8,21 @@ Follow the comments to complete each class.
 # ============================================
 # STEP 1: STUDENT CLASS
 # ============================================
+import random
 
 class Student:
     """
     A class representing a student
     
     Attributes:
-        student_id (int): 4 digit student ID
+        student_id (int): Random 6 digit student ID
         name (str): student name
         grade_level (number): student grade level (9-12)
     """
     
-    def __init__(self, student_id, name, grade_level):
+    def __init__(self, name, grade_level):
         """Initialize Student with student_id, name, grade_level"""
-        self.student_id = student_id
+        self.student_id = random.randint(100000, 999999)
         self.name = name
         self.grade_level = grade_level
     
@@ -48,9 +49,9 @@ class Class:
         teacher (str): name of the teacher in charge
     """
     
-    def __init__(self, class_id, class_name, teacher):
+    def __init__(self, class_name, teacher):
         """Initialize Class with class_id, class_name, and teacher"""
-        self.class_id = class_id
+        self.class_id = random.randint(1000, 9999)
         self.class_name = class_name
         self.teacher = teacher
         self.enrolled_students = []
@@ -62,6 +63,7 @@ class Class:
         if not isinstance(student, Student):
             raise TypeError("You can only add Student objects to class")
         self.enrolled_students.append(student)
+        print(f"Added: {student}")
 
     
     def remove_student(self, student_id: int):
@@ -78,28 +80,18 @@ class Class:
                     print(f"Student removed (ID: {student.student_id} Name: {student.name})")
                     
     def list_students(self):
-        # TODO: Display all students enrolled in this class
-        # Handle case when no students are enrolled
-        # YOUR CODE HERE
-        pass
+        if len(self.enrolled_students) == 0:
+            print("There are no students in this class")
+        else:
+            for index, student in enumerate(self.enrolled_students):
+                print(f"{index + 1}. {student}")
     
     def __str__(self):
         # TODO: Return string representation of the class
         # Include class ID, name, teacher, and number of students
         # YOUR CODE HERE
-        pass
-    
-jerry = Student(1001, "Jerry", 9)
-mary = Student(1002, "Mary", 10)
-shelly = Student(1003, "Shelly", 12)
+        return f"Class()"
 
-biology = Class(2001, "Biology", "Mr. Roberts")
-
-biology.add_student(jerry)
-biology.add_student(mary)
-biology.add_student(shelly)
-
-biology.remove_student(1001)
 
 # ============================================
 # STEP 3: GRADE CLASS
@@ -257,9 +249,20 @@ def main():
     3. Create an interactive menu system
     """
     
-    print("=" * 60)
-    print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
-    print("=" * 60)
+    # print("=" * 60)
+    # print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
+    # print("=" * 60)
+    jerry = Student("Jerry Tokovski", 9)
+    mary = Student("Mary Me Willyou", 10)
+    shelly = Student("Shelly Belly", 12)
+
+    biology = Class("Biology", "Mr. Roberts")
+
+    biology.add_student(jerry)
+    biology.add_student(mary)
+    biology.add_student(shelly)
+
+    biology.list_students()
     
     # TODO: Create your school
     # school = School("Your School Name")
