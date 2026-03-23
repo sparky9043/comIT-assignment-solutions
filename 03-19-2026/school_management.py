@@ -442,8 +442,6 @@ def main():
         response = int(response)
         
         # App Behavior depending on Response
-        # - Add a new student
-        # - Add a new class
         # - Enroll student in class
         # - Add a grade
         # - View student grades
@@ -461,7 +459,7 @@ def main():
         # Add a new student
         elif response == 3:
             print_divider()
-            print_center(" === ADD Student === ")
+            print_center("=== ADD Student ===")
             print_divider()
             
             student_name = input("Enter student name: ")
@@ -477,6 +475,19 @@ def main():
             
             print(f"✅ Success: {student.name} has been added! ID: {student.student_id}")
             
+        # Add a new class
+        elif response == 4:
+            print_divider()
+            print_center("=== ADD CLASS ===")
+            print_divider()
+            
+            class_id = generate_id(2000, hogwarts.classes_list)
+            class_name = input("Enter class name: ")
+            professor_name = input("Enter professor name: ")
+            
+            classroom = hogwarts.add_class(class_id, class_name, professor_name)
+            
+            print(f"{classroom.class_name} has been created!")
         
         print_divider()
         print()
