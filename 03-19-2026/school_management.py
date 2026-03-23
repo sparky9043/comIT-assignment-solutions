@@ -348,15 +348,18 @@ class School:
                     print(f"{grade.student.name:<30} | {grade.score:^10} | {grade.get_letter_grade():^10}")
     
     def calculate_student_average(self, student_id):
-        student = student_id
         # TODO: Calculate and display average grade for a student
         # Return the average or None if no grades
         # YOUR CODE HERE
+        student = self.find_student(student_id)
+        
         if student:
             grades = []
             for grade in self.grades_list:
                 if grade.student.student_id == student_id:
                     grades.append(grade)
+        else:
+            return None
                     
         return sum(grade.score for grade in grades) // len(grades) if grades else None
 
@@ -574,6 +577,22 @@ def main():
             class_id = int(input("Enter Class ID: "))
             
             hogwarts.list_grades_for_class(class_id)
+        
+        # - Calculate student average
+        elif response == 9:
+            print_title("=== CALCULATE Student Average ===")
+            
+            student_id = int(input("Enter Student ID: "))
+            
+            average_grade = hogwarts.calculate_student_average(student_id)
+            
+            if not average_grade:
+                print("Could not calculate average")
+                wait_for_user()
+                continue
+            else:
+                student = hogwarts.find_student(student_id)
+                print(f"The average grade for {student.name} is {average_grade}%.")
             
         print_divider()
         print()
