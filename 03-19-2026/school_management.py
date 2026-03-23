@@ -8,6 +8,8 @@ Follow the comments to complete each class.
 # ============================================
 # STEP 1: STUDENT CLASS
 # ============================================
+
+# Helper functions
 def print_divider(symbol="=", count=80):
     print(symbol * count)
 
@@ -17,6 +19,10 @@ def print_center(text: str, char_count=80):
 def print_left(text: str):
     print(f"  {text}")
 
+def generate_id(list):
+    return 1000 + len(list) + 1
+
+# Classes
 class Student:
     """
     A class representing a student
@@ -465,8 +471,8 @@ def main():
                 print(f"❌ Error: {hogwarts.school_name} only accepts grades 9-12")
                 input("Press enter to return to main menu...\n")
                 continue
-            length = len(hogwarts.students_list)
-            student_id = 1000 + length + 1
+            
+            student_id = generate_id(hogwarts.students_list)
             student = hogwarts.add_student(student_id, student_name, student_grade_level)
             
             print(f"✅ Success: {student.name} has been added! ID: {student.student_id}")
