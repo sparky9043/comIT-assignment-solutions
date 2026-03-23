@@ -40,19 +40,19 @@ class Student:
 
 class Class:
     """
-    TODO: Create a class to represent a school course.
+    A class representing a Class
     
-    Instructions:
-    1. Initialize with class_id, class_name, teacher
-    2. Create an empty list for enrolled_students
-    3. Create methods to add/remove students
-    4. Create method to list all students in the class
+    Attributes:
+        class_id (int): Classroom ID in integers
+        class_name (str): name of the class
+        teacher (str): name of the teacher in charge
     """
     
     def __init__(self, class_id, class_name, teacher):
-        # TODO: Initialize attributes and an empty list for enrolled students
-        # YOUR CODE HERE
-        pass
+        """Initialize Class with class_id, class_name, and teacher"""
+        self.class_id = class_id
+        self.class_name = class_name
+        self.teacher = teacher
     
     def add_student(self, student):
         # TODO: Add a student to the enrolled_students list
