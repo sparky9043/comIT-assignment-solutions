@@ -55,12 +55,12 @@ class Class:
         self.teacher = teacher
         self.enrolled_students = []
     
-    def add_student(self, student):
-        # TODO: Add a student to the enrolled_students list
-        # Check if student is already enrolled to avoid duplicates
-        # Print success or warning message
-        # YOUR CODE HERE
-        pass
+    def add_student(self, student: Student):
+        """Add student to Class object's enrolled students list if
+        it's an instance of Student Class
+        """
+        if isinstance(student, Student):
+            self.enrolled_students.append(student)
     
     def remove_student(self, student):
         # TODO: Remove a student from the enrolled_students list
