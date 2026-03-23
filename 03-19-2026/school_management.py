@@ -90,7 +90,8 @@ class Class:
         # TODO: Return string representation of the class
         # Include class ID, name, teacher, and number of students
         # YOUR CODE HERE
-        return f"Class()"
+        return (f"Class(ID: {self.class_id} | Name: {self.class_name} | "
+                f"Teacher: {self.teacher} | Total Students: {len(self.enrolled_students)})")
 
 
 # ============================================
@@ -209,19 +210,30 @@ class School:
         # Check if class_id already exists
         # Return the new class or None if failed
         # YOUR CODE HERE
-        pass
+        if class_id in [classroom.class_id for classroom in self.classes_list]:
+            print(f"Class ID: {class_id} already exists!")
+            return None
+        
+        class_obj = Class(class_id, class_name, teacher)
+        self.classes_list.append(class_obj)
+        return class_obj
     
     def find_class(self, class_id):
         # TODO: Find and return a class by ID
         # Return None if not found
         # YOUR CODE HERE
-        pass
+        for classroom in self.classes_list:
+            if classroom.class_id == class_id:
+                return classroom
+        print(f"Class ID: {class_id} not found!")
+        return None
     
     def list_all_classes(self):
-        # TODO: Display all classes in the school
-        # Include number of students enrolled in each class
-        # YOUR CODE HERE
-        pass
+        if not self.classes_list:
+            print(f"There are no classes at {self.school_name}.")
+        else:
+            for classroom in self.classes_list:
+                print(classroom)
     
     # ---------- ENROLLMENT MANAGEMENT ----------
     
@@ -288,7 +300,11 @@ def main():
     print(hogwarts.find_student(1001))
     print(hogwarts.find_student(1002))
     
+    hogwarts.add_class(2001, 'Defense Against the Dark Arts', 'Severus Snape')
+    hogwarts.add_class(2002, 'Astronomy', 'Aurora Sinistra')
+
     hogwarts.list_all_students()
+    hogwarts.list_all_classes()
     
     # TODO: Create your school
     # school = School("Your School Name")
