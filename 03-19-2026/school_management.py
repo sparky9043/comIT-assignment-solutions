@@ -20,7 +20,7 @@ class Student:
         grade_level (number): student grade level (9-12)
     """
     
-    def __init__(self, name, student_id, grade_level):
+    def __init__(self, student_id, name, grade_level):
         """Initialize Student with student_id (4 digits), name, grade_level"""
         self.student_id = student_id
         self.name = name
@@ -165,16 +165,24 @@ class School:
     def __init__(self, school_name):
         # TODO: Initialize school name and empty lists for students, classes, and grades
         # YOUR CODE HERE
-        pass
+        self.school_name  = school_name
+        self.students_list = []
+        self.classes_list = []
+        self.grades_list = []
     
     # ---------- STUDENT MANAGEMENT ----------
     
-    def add_student(self, student_id, name, grade_level):
+    def add_student(self, student_id: int, name: str, grade_level: int):
         # TODO: Create a new Student object and add to students list
         # Check if student_id already exists
         # Return the new student or None if failed
         # YOUR CODE HERE
-        pass
+        if student_id in [student.student_id for student in self.students_list]:
+            print(f"{student_id} already exists. Try again")
+        else:
+            student = Student(student_id, name, grade_level)
+            self.students_list.append(student)
+            print(f"New Student Added: {student}")
     
     def find_student(self, student_id):
         # TODO: Find and return a student by ID
@@ -264,21 +272,11 @@ def main():
     # print("=" * 60)
     # print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
     # print("=" * 60)
-    jerry = Student(1001, "Jerry Tokovski", 9)
-    mary = Student(1002, "Mary Me Willyou", 10)
-    shelly = Student(1003, "Shelly Belly", 12)
-
-    biology = Class(2001, "Biology", "Mr. Roberts")
-
-    biology.add_student(jerry)
-    biology.add_student(mary)
-    biology.add_student(shelly)
-
-    biology.list_students()
     
-    grade = Grade(3001, jerry, biology, 80)
+    hogwarts = School('Hogwarts')
     
-    print(grade)
+    hogwarts.add_student(1001, 'Harry Potter', 9)
+    
     
     # TODO: Create your school
     # school = School("Your School Name")
