@@ -444,14 +444,35 @@ def main():
         # - View class grades
         # - Calculate student average
         
-        # - List all students
+        # List all students
         if response == 1:
             hogwarts.list_all_students()
-            print_divider()
+            
+        # List all classes
         elif response == 2:
             hogwarts.list_all_classes()
-            print_divider()
         
+        # Add a new student
+        elif response == 3:
+            print_divider()
+            print_center(" === ADD Student === ")
+            print_divider()
+            
+            student_name = input("Enter student name: ")
+            student_grade_level = int(input("Enter student grade level (9-12): "))
+            
+            if not 9 <= student_grade_level <= 12:
+                print(f"❌ Error: {hogwarts.school_name} only accepts grades 9-12")
+                input("Press enter to return to main menu...\n")
+                continue
+            length = len(hogwarts.students_list)
+            student_id = 1000 + length + 1
+            student = hogwarts.add_student(student_id, student_name, student_grade_level)
+            
+            print(f"✅ Success: {student.name} has been added! ID: {student.student_id}")
+            
+        
+        print_divider()
         print()
         input('Press enter to continue...\n')
             
