@@ -37,7 +37,7 @@ class Student:
         # TODO: Return a string representation of the student
         # Example: "Student(ID: 1001, Name: Alice, Grade: 10)"
         # YOUR CODE HERE
-        pass
+        return f"Studnet(ID: {self.student_id}, Name: {self.name}, Grade: {self.grade_level})"
 
 
 # ============================================
