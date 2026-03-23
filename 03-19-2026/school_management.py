@@ -597,16 +597,6 @@ def main():
         print_divider()
         print()
         input('Press enter to continue...\n')
-            
-    
-    # HINT: Use a while loop and if/elif statements for the menu
-    
-    # YOUR CODE HERE
-
-
-# ============================================
-# RUN THE PROGRAM
-# ============================================
 
 if __name__ == "__main__":
     main()
