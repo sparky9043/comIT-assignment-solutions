@@ -64,16 +64,19 @@ class Class:
         self.enrolled_students.append(student)
 
     
-    def remove_student(self, student):
+    def remove_student(self, student_id: int):
         """
         Remove a student from class
         """
-        if student in self.enrolled_students:
-            self.enrolled_students.remove(student)
-            print(f"{student.name} removed from {self.class_name}")
+        if not student_id in [student.student_id for student in self.enrolled_students]:
+            print(f"Could not found student with ID: {student_id}")
         else:
-            print(f"{student.name} is not enrolled in {self.class_name}")
-    
+            for student in self.enrolled_students:
+                if student_id == student.student_id:
+                    print("Student Found:")
+                    self.enrolled_students.remove(student)
+                    print(f"Student removed (ID: {student.student_id} Name: {student.name})")
+                    
     def list_students(self):
         # TODO: Display all students enrolled in this class
         # Handle case when no students are enrolled
@@ -96,7 +99,7 @@ biology.add_student(jerry)
 biology.add_student(mary)
 biology.add_student(shelly)
 
-biology.remove_student("hello")
+biology.remove_student(1001)
 
 # ============================================
 # STEP 3: GRADE CLASS
