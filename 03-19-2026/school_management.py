@@ -23,13 +23,15 @@ class Student:
     def __init__(self, student_id, name, grade_level):
         # TODO: Initialize the attributes
         # YOUR CODE HERE
-        pass
+        self.student_id = student_id
+        self.name = name
+        self.grade_level = grade_level
     
     def display_info(self):
         # TODO: Print student information in a formatted way
         # Example: "ID: 1001 | Name: Alice | Grade: 10"
         # YOUR CODE HERE
-        pass
+        print(f"ID: {self.student_id} | Name: {self.name} | Grade: {self.grade_level}")
     
     def __str__(self):
         # TODO: Return a string representation of the student
