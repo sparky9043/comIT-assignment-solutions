@@ -22,6 +22,9 @@ def print_left(text: str):
 def generate_id(base_number, list):
     return base_number + len(list) + 1
 
+def wait_for_user(text="Press enter to continue...\n"):
+    input(text + "\n")
+
 # Classes
 class Student:
     """
@@ -79,8 +82,10 @@ class Class:
         if not student in self.enrolled_students:
             self.enrolled_students.append(student)
             print(f"✅ {student.name} added to {self.class_name}")
+            return True
         else:
             print(f"❌ {student.name} (ID: {student.student_id}) is already in {self.class_name}")
+            return False
 
     
     def remove_student(self, student_id: int):
@@ -276,8 +281,11 @@ class School:
             print(f"Student ID: {student_id} The student does not exist in {self.school_name}")
             return False
         
-        classroom.add_student(student)
-        return True
+        enrollment_status = classroom.add_student(student)
+        
+        if enrollment_status:
+            return True
+        return False
     
     # ---------- GRADE MANAGEMENT ----------
     
@@ -467,7 +475,7 @@ def main():
             
             if not 9 <= student_grade_level <= 12:
                 print(f"❌ Error: {hogwarts.school_name} only accepts grades 9-12")
-                input("Press enter to return to main menu...\n")
+                wait_for_user("Press enter to return to main menu\n")
                 continue
             
             student_id = generate_id(1000, hogwarts.students_list)
@@ -488,6 +496,35 @@ def main():
             classroom = hogwarts.add_class(class_id, class_name, professor_name)
             
             print(f"{classroom.class_name} has been created!")
+        
+        # Enroll student in class
+        elif response == 5:
+            print_divider()
+            print_center("=== ENROLL Student in Class ===")
+            print_divider()
+            
+            student_id = int(input("Enter Student ID: "))
+            student = hogwarts.find_student(student_id)
+            
+            if not student:
+                print(f"Invalid ID: Student ID {student_id} was not found")
+                wait_for_user()
+                continue
+            
+            class_id = int(input(f"Enter Class ID: "))
+            classroom = hogwarts.find_class(class_id)
+            
+            if not classroom:
+                print(f"Invalid Class ID: Class ID {class_id} was not found")
+                wait_for_user()
+                continue
+            
+            enrolled_class = hogwarts.enroll_student_in_class(student_id, class_id)
+            
+            if enrolled_class:
+                print(f"Enrollment Success: {student.name} was enrolled in {classroom.class_name}")
+            else:
+                print("Enrollment failed")
         
         print_divider()
         print()
