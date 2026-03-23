@@ -331,13 +331,30 @@ def main():
     2. Add sample data (students, classes, enrollments, grades)
     3. Create an interactive menu system
     """
+
+    print("=" * 60)
+    print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
+    print("=" * 60)
     
-    # print("=" * 60)
-    # print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
-    # print("=" * 60)
+
+    # hogwarts.list_all_students()
+    # hogwarts.list_all_classes()
     
+    # hogwarts.list_all_students()
+    # hogwarts.list_all_classes()
+
+    
+    # hogwarts.list_grades_for_class(2009)
+    # hogwarts.list_grades_for_student(1010)
+    
+    # print(hogwarts.calculate_student_average(1001))
+    
+    # TODO: Create your school
+    # school = School("Your School Name")
     hogwarts = School('Hogwarts')
     
+    # TODO: Add sample students
+    # Use the data from the tutorial or create your own
     hogwarts.add_student(1001, 'Harry Potter', 10)
     hogwarts.add_student(1002, 'Hermione Granger', 10)
     hogwarts.add_student(1003, 'Ron Weasly', 10)
@@ -347,15 +364,11 @@ def main():
     hogwarts.add_student(1007, 'Dean Thomas', 12)
     hogwarts.add_student(1008, 'George Weasly', 12)
     
-    print(hogwarts.find_student(1001))
-    print(hogwarts.find_student(1002))
-    
+    # TODO: Add sample classes
     hogwarts.add_class(2001, 'Defense Against the Dark Arts', 'Severus Snape')
     hogwarts.add_class(2002, 'Astronomy', 'Aurora Sinistra')
-
-    hogwarts.list_all_students()
-    hogwarts.list_all_classes()
     
+    # TODO: Enroll students in classes
     hogwarts.enroll_student_in_class(1001, 2001)
     hogwarts.enroll_student_in_class(1001, 2002)
     hogwarts.enroll_student_in_class(1002, 2001)
@@ -365,30 +378,11 @@ def main():
     hogwarts.enroll_student_in_class(1006, 2002)
     hogwarts.enroll_student_in_class(1006, 2002)
     
-    hogwarts.list_all_students()
-    hogwarts.list_all_classes()
-    
+    # TODO: Add sample grades
     hogwarts.add_grade(3001, 1001, 2001, 89)
     hogwarts.add_grade(3002, 1001, 2002, 99)
     hogwarts.add_grade(3003, 1002, 2001, 100)
     hogwarts.add_grade(3004, 1003, 2001, 78)
-    
-    hogwarts.list_grades_for_class(2009)
-    hogwarts.list_grades_for_student(1010)
-    
-    print(hogwarts.calculate_student_average(1001))
-    
-    # TODO: Create your school
-    # school = School("Your School Name")
-    
-    # TODO: Add sample students
-    # Use the data from the tutorial or create your own
-    
-    # TODO: Add sample classes
-    
-    # TODO: Enroll students in classes
-    
-    # TODO: Add sample grades
     
     # TODO: Create the interactive menu system
     # Include options to:
