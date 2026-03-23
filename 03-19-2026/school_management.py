@@ -24,6 +24,11 @@ def generate_id(base_number, list):
 
 def wait_for_user(text="Press enter to continue...\n"):
     input(text + "\n")
+    
+def print_title(text):
+    print_divider()
+    print_center(text)
+    print_divider()
 
 # Classes
 class Student:
@@ -324,9 +329,12 @@ class School:
         student = self.find_student(student_id)
         
         if student:
+            print_title(f"Grades for {student.name}")
+            print(f"{"Class Name":^30} | {"Score":^10} | {"Grade":^10}")
+            print_divider("-")
             for grade in self.grades_list:
                 if grade.student.student_id == student_id:
-                    print(grade)
+                    print(f"{grade.class_obj.class_name:^30} | {grade.score:^10} | {grade.get_letter_grade():^10}")
             
     def list_grades_for_class(self, class_id: int):
         classroom = self.find_class(class_id)
@@ -364,9 +372,8 @@ def main():
     3. Create an interactive menu system
     """
 
-    print_divider()
-    print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫".center(60))
-    print_divider()
+    print_title("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
+    
     
 
     # hogwarts.list_all_students()
@@ -430,9 +437,7 @@ def main():
     # - Exit
     while True:
         # Main Menu
-        print_divider()
-        print_center(" *** Main Menu *** ")
-        print_divider()
+        print_title(" *** Main Menu *** ")
         
         print_left("1. List all students")
         print_left("2. List all classes")
@@ -469,9 +474,7 @@ def main():
         
         # Add a new student
         elif response == 3:
-            print_divider()
-            print_center("=== ADD Student ===")
-            print_divider()
+            print_title("=== ADD Student ===")
             
             student_name = input("Enter student name: ")
             student_grade_level = int(input("Enter student grade level (9-12): "))
@@ -488,9 +491,7 @@ def main():
             
         # Add a new class
         elif response == 4:
-            print_divider()
-            print_center("=== ADD CLASS ===")
-            print_divider()
+            print_title("=== ADD CLASS ===")
             
             class_id = generate_id(2000, hogwarts.classes_list)
             class_name = input("Enter class name: ")
@@ -502,9 +503,7 @@ def main():
         
         # Enroll student in class
         elif response == 5:
-            print_divider()
-            print_center("=== ENROLL Student in Class ===")
-            print_divider()
+            print_title("=== ENROLL Student in Class ===")
             
             student_id = int(input("Enter Student ID: "))
             student = hogwarts.find_student(student_id)
@@ -531,9 +530,7 @@ def main():
         
         # - Add a grade
         elif response ==  6:
-            print_divider()
-            print_center("=== ADD Grade ===")
-            print_divider()
+            print_title("=== ADD Grade ===")
             
             student_id = int(input("Enter Student ID: "))
             student = hogwarts.find_student(student_id)
@@ -560,6 +557,14 @@ def main():
                 print(f"✅ Grade Added: {student.name}'s grade assigned")
             else:
                 print(f"❌ Could not assign grade to student")
+        
+        # View student grades
+        elif response == 7:
+            print_title("=== VIEW Student Grades ===")
+            
+            student_id = int(input("Enter Student ID: "))
+            
+            hogwarts.list_grades_for_student(student_id)
             
         print_divider()
         print()
