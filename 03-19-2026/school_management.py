@@ -8,7 +8,14 @@ Follow the comments to complete each class.
 # ============================================
 # STEP 1: STUDENT CLASS
 # ============================================
-import random
+def print_divider(symbol="=", count=60):
+    print(symbol * count)
+
+def print_center(text: str, char_count=60):
+    print(text.center(char_count))
+    
+def print_left(text: str):
+    print(f"  {text}")
 
 class Student:
     """
@@ -65,9 +72,9 @@ class Class:
         
         if not student in self.enrolled_students:
             self.enrolled_students.append(student)
-            print(f"Added: {student}")
+            print(f"✅ {student.name} added to {self.class_name}")
         else:
-            print(f"Name: {student.name} (ID: {student.student_id}) is already enrolled in {self.class_name}")
+            print(f"❌ {student.name} (ID: {student.student_id}) is already in {self.class_name}")
 
     
     def remove_student(self, student_id: int):
@@ -201,9 +208,9 @@ class School:
         if not self.students_list:
             print(f"There are no students in enrolled in {self.school_name}")
         else:
-            print("=" * 50)
+            print_divider()
             print(f"Students at {self.school_name}")
-            print("=" * 50)
+            print_divider()
             for index, student in enumerate(self.students_list):
                 print(f"{index + 1}) {student}")
     
@@ -332,9 +339,9 @@ def main():
     3. Create an interactive menu system
     """
 
-    print("=" * 60)
-    print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
-    print("=" * 60)
+    print_divider()
+    print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫".center(60))
+    print_divider()
     
 
     # hogwarts.list_all_students()
@@ -396,11 +403,34 @@ def main():
     # - View class grades
     # - Calculate student average
     # - Exit
+    while True:
+        # Main Menu
+        print_divider()
+        print_center(" *** Main Menu *** ")
+        print_divider()
+        
+        print_left("1. List all students")
+        print_left("2. List all classes")
+        print_left("3. Add a new student")
+        print_left("4. Add a new class")
+        print_left("5. Enroll student in class")
+        print_left("6. Add a grade")
+        print_left("7. View student grades")
+        print_left("8. View class grades")
+        print_left("9. Class student Average")
+        
+        print_divider()
+        
+        response = input('Enter a response (1-9). Type "exit" to exit: \nYour Response: ')
+        
+        if response.lower() == 'exit':
+            break
+        
+        response = int(response)
     
     # HINT: Use a while loop and if/elif statements for the menu
     
     # YOUR CODE HERE
-    pass
 
 
 # ============================================
