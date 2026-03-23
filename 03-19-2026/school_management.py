@@ -255,9 +255,6 @@ class School:
         if not student:
             print(f"Student ID: {student_id} The student does not exist in {self.school_name}")
             return False
-        if not classroom:
-            print(f"Class ID: {class_id} The class does not exist in {self.school_name}")
-            return False
         
         classroom.add_student(student)
         return True
@@ -271,17 +268,41 @@ class School:
         # Check if grade_id already exists
         # Create and add new Grade object
         # YOUR CODE HERE
-        pass
+        student = self.find_student(student_id)
+        classroom = self.find_class(class_id)
+
+        if not student:
+            print(f"Student ID {student_id} not found")
+            return False
+        if not classroom:
+            print(f"Class ID {class_id} not found")
+            return False
+        # if grade_id in [grade.grade_id for grade in self.grades_list]:
+        #     print(f"")
+        for grade in self.grades_list:
+            if grade_id == grade.grade_id:
+                print(f"{grade.student.name} has already received a grade")
+                return False
+        
+        student_grade = Grade(grade_id, student, classroom, score)
+        self.grades_list.append(student_grade)
+        return True
     
-    def list_grades_for_student(self, student_id):
-        # TODO: Display all grades for a specific student
-        # YOUR CODE HERE
-        pass
-    
-    def list_grades_for_class(self, class_id):
-        # TODO: Display all grades for a specific class
-        # YOUR CODE HERE
-        pass
+    def list_grades_for_student(self, student_id: int):
+        student = self.find_student(student_id)
+        
+        if student:
+            for grade in self.grades_list:
+                if grade.student.student_id == student_id:
+                    print(grade)
+            
+    def list_grades_for_class(self, class_id: int):
+        classroom = self.find_class(class_id)
+        
+        if classroom:
+            for grade in self.grades_list:
+                if grade.class_obj.class_id == class_id:
+                    print(grade)
     
     def calculate_student_average(self, student_id):
         # TODO: Calculate and display average grade for a student
@@ -339,6 +360,14 @@ def main():
     
     hogwarts.list_all_students()
     hogwarts.list_all_classes()
+    
+    hogwarts.add_grade(3001, 1001, 2001, 89)
+    hogwarts.add_grade(3002, 1001, 2002, 99)
+    hogwarts.add_grade(3003, 1002, 2001, 100)
+    hogwarts.add_grade(3004, 1003, 2001, 78)
+    
+    hogwarts.list_grades_for_class(2009)
+    hogwarts.list_grades_for_student(1010)
     
     # TODO: Create your school
     # school = School("Your School Name")
