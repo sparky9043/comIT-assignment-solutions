@@ -11,13 +11,12 @@ Follow the comments to complete each class.
 
 class Student:
     """
-    TODO: Create a class to represent a student.
+    A class representing a student
     
-    Instructions:
-    1. Create the __init__ method with parameters: self, student_id, name, grade_level
-    2. Store these as instance variables
-    3. Create a display_info method that prints student details
-    4. Create __str__ method for string representation
+    Attributes:
+        student_id (int): 4 digit student ID
+        name (str): student name
+        grade_level (number): student grade level (9-12)
     """
     
     def __init__(self, student_id, name, grade_level):
