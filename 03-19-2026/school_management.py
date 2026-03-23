@@ -62,8 +62,12 @@ class Class:
         """
         if not isinstance(student, Student):
             raise TypeError("You can only add Student objects to class")
-        self.enrolled_students.append(student)
-        print(f"Added: {student}")
+        
+        if not student in self.enrolled_students:
+            self.enrolled_students.append(student)
+            print(f"Added: {student}")
+        else:
+            print(f"Name: {student.name} (ID: {student.student_id}) is already enrolled in {self.class_name}")
 
     
     def remove_student(self, student_id: int):
@@ -243,7 +247,20 @@ class School:
         # Use the class's add_student method
         # Return True if successful, False otherwise
         # YOUR CODE HERE
-        pass
+        # if not self.find_student(student_id):
+        #     print("student not found")
+        student = self.find_student(student_id)
+        classroom = self.find_class(class_id)
+        
+        if not student:
+            print(f"Student ID: {student_id} The student does not exist in {self.school_name}")
+            return False
+        if not classroom:
+            print(f"Class ID: {class_id} The class does not exist in {self.school_name}")
+            return False
+        
+        classroom.add_student(student)
+        return True
     
     # ---------- GRADE MANAGEMENT ----------
     
@@ -305,6 +322,9 @@ def main():
 
     hogwarts.list_all_students()
     hogwarts.list_all_classes()
+    
+    hogwarts.enroll_student_in_class(1001, 2001)
+    hogwarts.enroll_student_in_class(1001, 2001)
     
     # TODO: Create your school
     # school = School("Your School Name")
