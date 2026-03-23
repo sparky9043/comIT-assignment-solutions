@@ -329,20 +329,23 @@ class School:
         student = self.find_student(student_id)
         
         if student:
-            print_title(f"Grades for {student.name}")
+            print_title(f"Grades for Student: {student.name}")
             print(f"{"Class Name":^30} | {"Score":^10} | {"Grade":^10}")
             print_divider("-")
             for grade in self.grades_list:
                 if grade.student.student_id == student_id:
-                    print(f"{grade.class_obj.class_name:^30} | {grade.score:^10} | {grade.get_letter_grade():^10}")
+                    print(f"{grade.class_obj.class_name:<30} | {grade.score:^10} | {grade.get_letter_grade():^10}")
             
     def list_grades_for_class(self, class_id: int):
         classroom = self.find_class(class_id)
         
         if classroom:
+            print_title(f"Grades for Class: {classroom.class_name}")
+            print(f"{"Student Name":^30} | {"Score":^10} | {"Grade":^10}")
+            print_divider("-")
             for grade in self.grades_list:
                 if grade.class_obj.class_id == class_id:
-                    print(grade)
+                    print(f"{grade.student.name:<30} | {grade.score:^10} | {grade.get_letter_grade():^10}")
     
     def calculate_student_average(self, student_id):
         student = student_id
@@ -459,8 +462,6 @@ def main():
         response = int(response)
         
         # App Behavior depending on Response
-        # - Add a grade
-        # - View student grades
         # - View class grades
         # - Calculate student average
         
@@ -565,6 +566,14 @@ def main():
             student_id = int(input("Enter Student ID: "))
             
             hogwarts.list_grades_for_student(student_id)
+            
+        # View Class Grades:
+        elif response == 8:
+            print_title("=== VIEW Class Grades ===")
+            
+            class_id = int(input("Enter Class ID: "))
+            
+            hogwarts.list_grades_for_class(class_id)
             
         print_divider()
         print()
