@@ -19,8 +19,8 @@ def print_center(text: str, char_count=80):
 def print_left(text: str):
     print(f"  {text}")
 
-def generate_id(list):
-    return 1000 + len(list) + 1
+def generate_id(base_number, list):
+    return base_number + len(list) + 1
 
 # Classes
 class Student:
@@ -472,7 +472,7 @@ def main():
                 input("Press enter to return to main menu...\n")
                 continue
             
-            student_id = generate_id(hogwarts.students_list)
+            student_id = generate_id(1000, hogwarts.students_list)
             student = hogwarts.add_student(student_id, student_name, student_grade_level)
             
             print(f"✅ Success: {student.name} has been added! ID: {student.student_id}")
