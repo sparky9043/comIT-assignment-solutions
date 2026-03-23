@@ -8,10 +8,10 @@ Follow the comments to complete each class.
 # ============================================
 # STEP 1: STUDENT CLASS
 # ============================================
-def print_divider(symbol="=", count=60):
+def print_divider(symbol="=", count=80):
     print(symbol * count)
 
-def print_center(text: str, char_count=60):
+def print_center(text: str, char_count=80):
     print(text.center(char_count))
     
 def print_left(text: str):
@@ -209,10 +209,12 @@ class School:
             print(f"There are no students in enrolled in {self.school_name}")
         else:
             print_divider()
-            print(f"Students at {self.school_name}")
+            print_center(f"Students at {self.school_name}")
             print_divider()
-            for index, student in enumerate(self.students_list):
-                print(f"{index + 1}) {student}")
+            print(f"{"ID":^5} | {"Student Name":<30} | Grade ")
+            print_divider('-')
+            for student in self.students_list:
+                print(f"{student.student_id:^5} | {student.name:<30} | {student.grade_level} ")
     
     # ---------- CLASS MANAGEMENT ----------
     
@@ -243,8 +245,11 @@ class School:
         if not self.classes_list:
             print(f"There are no classes at {self.school_name}.")
         else:
+            print_divider()
+            print_center(f"Classes at {self.school_name}")
+            print_divider()
             for classroom in self.classes_list:
-                print(classroom)
+                print(f"Class: {classroom.class_name} | Instructor: {classroom.teacher}")
     
     # ---------- ENROLLMENT MANAGEMENT ----------
     
@@ -427,6 +432,25 @@ def main():
             break
         
         response = int(response)
+        
+        # App Behavior depending on Response
+        # - Add a new student
+        # - Add a new class
+        # - Enroll student in class
+        # - Add a grade
+        # - View student grades
+        # - View class grades
+        # - Calculate student average
+        
+        # - List all students
+        if response == 1:
+            hogwarts.list_all_students()
+            print_divider()
+        elif response == 2:
+            hogwarts.list_all_classes()
+            print_divider()
+        input('Press enter to continue...')
+            
     
     # HINT: Use a while loop and if/elif statements for the menu
     
