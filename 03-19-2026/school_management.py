@@ -313,6 +313,10 @@ class School:
                 return False
         
         student_grade = Grade(grade_id, student, classroom, score)
+        
+        if not student_grade:
+            return False
+        
         self.grades_list.append(student_grade)
         return True
     
@@ -450,7 +454,6 @@ def main():
         response = int(response)
         
         # App Behavior depending on Response
-        # - Enroll student in class
         # - Add a grade
         # - View student grades
         # - View class grades
@@ -522,10 +525,42 @@ def main():
             enrollment_status = hogwarts.enroll_student_in_class(student_id, class_id)
             
             if enrollment_status:
-                print(f"Enrollment Success: {student.name} was enrolled in {classroom.class_name}")
+                print(f"✅ Enrollment Success: {student.name} was enrolled in {classroom.class_name}")
             else:
-                print("Enrollment failed")
+                print("❌ Enrollment failed")
         
+        # - Add a grade
+        elif response ==  6:
+            print_divider()
+            print_center("=== ADD Grade ===")
+            print_divider()
+            
+            student_id = int(input("Enter Student ID: "))
+            student = hogwarts.find_student(student_id)
+            
+            if not student:
+                print(f"Invalid ID: Student ID {student_id} was not found")
+                wait_for_user()
+                continue
+            
+            class_id = int(input("Enter Class ID: "))
+            classroom = hogwarts.find_class(class_id)
+            
+            if not classroom:
+                print(f"Invalid Class ID: Class ID {class_id} was not found")
+                wait_for_user()
+                continue
+            
+            score = int(input("What score would you like to assign to student? (at least 0) "))
+            grade_id = generate_id(3000, hogwarts.grades_list)
+            
+            saved_grade = hogwarts.add_grade(grade_id, student_id, class_id, score)
+            
+            if saved_grade:
+                print(f"✅ Grade Added: {student.name}'s grade assigned")
+            else:
+                print(f"❌ Could not assign grade to student")
+            
         print_divider()
         print()
         input('Press enter to continue...\n')
