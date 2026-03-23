@@ -519,9 +519,9 @@ def main():
                 wait_for_user()
                 continue
             
-            enrolled_class = hogwarts.enroll_student_in_class(student_id, class_id)
+            enrollment_status = hogwarts.enroll_student_in_class(student_id, class_id)
             
-            if enrolled_class:
+            if enrollment_status:
                 print(f"Enrollment Success: {student.name} was enrolled in {classroom.class_name}")
             else:
                 print("Enrollment failed")
