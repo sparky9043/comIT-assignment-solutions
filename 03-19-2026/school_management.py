@@ -31,7 +31,7 @@ class Student:
     
     def __str__(self):
         """Return a string representation of the student"""
-        return f"Studnet(ID: {self.student_id}, Name: {self.name}, Grade: {self.grade_level})"
+        return f"Student(ID: {self.student_id}, Name: {self.name}, Grade: {self.grade_level})"
 
 
 # ============================================
