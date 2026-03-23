@@ -146,8 +146,8 @@ class Grade:
         # TODO: Return string representation of the grade
         # Include letter grade in the string
         # YOUR CODE HERE
-        return (f"Grade(ID: {self.grade_id}; Student: {self.student.name};"
-                f"Class: {self.class_obj.class_name}, Score: {self.score};"
+        return (f"Grade(ID: {self.grade_id}; Student: {self.student.name}; "
+                f"Class: {self.class_obj.class_name}, Score: {self.score}; "
                 f"Letter: {self.get_letter_grade()})")
 
 
@@ -264,17 +264,21 @@ def main():
     # print("=" * 60)
     # print("🏫 WELCOME TO THE SCHOOL MANAGEMENT SYSTEM 🏫")
     # print("=" * 60)
-    jerry = Student("Jerry Tokovski", 9)
-    mary = Student("Mary Me Willyou", 10)
-    shelly = Student("Shelly Belly", 12)
+    jerry = Student(1001, "Jerry Tokovski", 9)
+    mary = Student(1002, "Mary Me Willyou", 10)
+    shelly = Student(1003, "Shelly Belly", 12)
 
-    biology = Class("Biology", "Mr. Roberts")
+    biology = Class(2001, "Biology", "Mr. Roberts")
 
     biology.add_student(jerry)
     biology.add_student(mary)
     biology.add_student(shelly)
 
     biology.list_students()
+    
+    grade = Grade(3001, jerry, biology, 80)
+    
+    print(grade)
     
     # TODO: Create your school
     # school = School("Your School Name")
