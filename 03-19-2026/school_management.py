@@ -178,11 +178,13 @@ class School:
         # Return the new student or None if failed
         # YOUR CODE HERE
         if student_id in [student.student_id for student in self.students_list]:
-            print(f"{student_id} already exists. Try again")
+            print(f"{name} is already enrolled (ID: {student_id}). Try another student.")
+            return None
         else:
             student = Student(student_id, name, grade_level)
             self.students_list.append(student)
             print(f"New Student Added: {student}")
+            return student
     
     def find_student(self, student_id):
         # TODO: Find and return a student by ID
@@ -275,6 +277,8 @@ def main():
     
     hogwarts = School('Hogwarts')
     
+    hogwarts.add_student(1001, 'Harry Potter', 9)
+    hogwarts.add_student(1001, 'Harry Potter', 9)
     hogwarts.add_student(1001, 'Harry Potter', 9)
     
     
