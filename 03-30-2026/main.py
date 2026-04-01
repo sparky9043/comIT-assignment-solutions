@@ -45,11 +45,13 @@ def main():
         try: 
             choice = int(show_menu())
         except ValueError:
-            print("Please enter a valid number")
+            print("TypeError:", "Please enter a valid number")
+            input("Press Enter to continue...")
             continue
 
         if choice < 1 or choice > 6:
-            print("Please print a number between 1 to 6")
+            print("ValueError:", "Please print a number between 1 to 6")
+            input("Press Enter to continue...")
             continue
 
         if choice == 6:
