@@ -10,6 +10,22 @@ def print_center(text):
     """
     print(f"{text:^80}")
 
+def update_car_flow(Car: Car, add_car):
+    try:
+        make = input("Enter car make: ")
+        model = input("Enter car model: ")
+        year = int(input("Enter car manufacture year (>0): "))
+        price = float(input("Enter car price (>0.00): "))
+        mileage = int(input("Enter car mileage: "))
+        
+        new_car = Car(make, model, year, price, mileage)
+        add_car(new_car)
+
+        print("🚗 Car added successfully!")
+    except ValueError:
+        print("❌ Please make sure all your values are correct")
+        wait_user_enter()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -61,20 +77,7 @@ def main():
             break
 
         if choice == 1:
-            try:
-                make = input("Enter car make: ")
-                model = input("Enter car model: ")
-                year = int(input("Enter car manufacture year (>0): "))
-                price = float(input("Enter car price (>0.00): "))
-                mileage = int(input("Enter car mileage: "))
-                
-                new_car = Car(make, model, year, price, mileage)
-                add_car(new_car)
-
-                print("🚗 Car added successfully!")
-            except ValueError:
-                print("❌ Please make sure all your values are correct")
-                wait_user_enter()
+            update_car_flow(Car, add_car)
 
         if choice == 2:
             cars = get_all_cars()
