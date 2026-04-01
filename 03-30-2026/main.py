@@ -8,9 +8,9 @@ def print_center(text):
     Args:
         text (str): User-provided text to print to center
     """
-    print(f"{text:^40}")
+    print(f"{text:^80}")
 
-def print_divider(shape="=", number=40):
+def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
     Args:
@@ -18,6 +18,9 @@ def print_divider(shape="=", number=40):
         number (int): number of shapes to print
     """
     print(shape * number)
+
+def wait_user_enter():
+    input("Press enter to continue...")
 
 def show_menu():
     print()
@@ -46,14 +49,27 @@ def main():
             choice = int(show_menu())
         except ValueError:
             print("TypeError:", "Please enter a valid number")
-            input("Press Enter to continue...")
+            wait_user_enter()
             continue
 
         if choice < 1 or choice > 6:
             print("ValueError:", "Please print a number between 1 to 6")
-            input("Press Enter to continue...")
+            wait_user_enter()
             continue
 
         if choice == 6:
             break
+
+        if choice == 2:
+            cars = get_all_cars()
+            print_divider()
+            print_center("List of Cars")
+            if len(cars) == 0:
+                print("There are no cars in the inventory")
+                wait_user_enter()
+                continue
+            for car in cars:
+                print(car)
+            print_divider()
+            wait_user_enter()
 main()
