@@ -32,7 +32,7 @@ class Car:
         self.id = id
 
     def __str__(self):
-        return (f"[ID: {self.id}] {self.year} {self.make + self.model} | "
+        return (f"[ID: {self.id}] {self.year} {self.make + " " + self.model} | "
             f"${self.price:,.2f} | {self.mileage:,} km")
     
     def to_tuple(self):
