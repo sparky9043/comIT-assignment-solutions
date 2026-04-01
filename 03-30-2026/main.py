@@ -26,6 +26,18 @@ def add_car_flow(Car: Car, add_car):
         print("❌ Please make sure all your values are correct")
         wait_user_enter()
 
+def view_car_flow():
+    cars = get_all_cars()
+    print_divider()
+    print_center("List of Cars")
+    if len(cars) == 0:
+        print("❌ There are no cars in the inventory")
+    else:
+        for car in cars:
+            print(car)
+        print_divider()
+    wait_user_enter()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -80,15 +92,5 @@ def main():
             add_car_flow(Car, add_car)
 
         if choice == 2:
-            cars = get_all_cars()
-            print_divider()
-            print_center("List of Cars")
-            if len(cars) == 0:
-                print("❌ There are no cars in the inventory")
-                wait_user_enter()
-                continue
-            for car in cars:
-                print(car)
-            print_divider()
-            wait_user_enter()
+            view_car_flow()
 main()
