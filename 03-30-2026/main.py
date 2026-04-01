@@ -24,7 +24,7 @@ def add_car_flow():
         print("🚗 Car added successfully!")
     except ValueError:
         print("❌ Please make sure all your values are correct")
-        wait_user_enter()
+        wait_for_user()
 
 def view_car_flow():
     cars = get_all_cars()
@@ -36,7 +36,7 @@ def view_car_flow():
         for car in cars:
             print(car)
         print_divider()
-    wait_user_enter()
+    wait_for_user()
 
 def update_car_flow():
     try:
@@ -63,13 +63,13 @@ def update_car_flow():
         print_center('🚗 Car Updated Successfully!')
         print_center(f"Updated: {updated_car}")
         print_divider()
-        wait_user_enter()
+        wait_for_user()
 
     except ValueError as e:
         print_divider()
         print_center(f"Error: {e}")
         print_divider()
-        wait_user_enter()
+        wait_for_user()
 
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
@@ -80,7 +80,7 @@ def print_divider(shape="=", number=80):
     """
     print(shape * number)
 
-def wait_user_enter():
+def wait_for_user():
     input("Press enter to continue...")
 
 def show_menu():
@@ -110,12 +110,12 @@ def main():
             choice = int(show_menu())
         except ValueError:
             print("TypeError:", "Please enter a valid number")
-            wait_user_enter()
+            wait_for_user()
             continue
 
         if choice < 1 or choice > 6:
             print("ValueError:", "Please print a number between 1 to 6")
-            wait_user_enter()
+            wait_for_user()
             continue
 
         if choice == 6:
@@ -129,5 +129,16 @@ def main():
         
         elif choice == 3:
             update_car_flow()
+
+        elif choice == 4:
+            try:
+                car_id = int(input("Enter car id: "))
+                saved_car = get_car_by_id(car_id)
+
+                if not saved_car:
+                    raise ValueError("Car Not Found")
+            except ValueError as e:
+                print_center(f"Error: {e}")
+                wait_for_user()
 
 main()
