@@ -71,6 +71,33 @@ def update_car_flow():
         print_divider()
         wait_for_user()
 
+def delete_car_flow():
+    try:
+        car_id = int(input("Enter car id: "))
+        saved_car = get_car_by_id(car_id)
+
+        if not saved_car:
+            raise ValueError("Car Not Found")
+        
+        print_divider()
+        print(saved_car)
+        print_divider()
+
+        yes_or_no = input("Are you sure? (y/n): ")
+
+        if yes_or_no.lower() in ['y', 'yes']:
+            delete_car(car_id)
+            print_center("Car deleted successfully")
+        elif yes_or_no.lower() in ['n', 'no']:
+            print_center('Delete canceled')
+        wait_for_user()
+
+    except ValueError as e:
+        print_divider()
+        print_center(f"Error: {e}")
+        print_divider()
+        wait_for_user()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -131,14 +158,6 @@ def main():
             update_car_flow()
 
         elif choice == 4:
-            try:
-                car_id = int(input("Enter car id: "))
-                saved_car = get_car_by_id(car_id)
-
-                if not saved_car:
-                    raise ValueError("Car Not Found")
-            except ValueError as e:
-                print_center(f"Error: {e}")
-                wait_for_user()
+            delete_car_flow()
 
 main()
