@@ -66,7 +66,7 @@ def main():
                 model = input("Enter car model: ")
                 year = int(input("Enter car manufacture year (>0): "))
                 price = float(input("Enter car price (>0.00): "))
-                mileage = int(input("Enter car mileage"))
+                mileage = int(input("Enter car mileage: "))
                 
                 new_car = Car(make, model, year, price, mileage)
                 add_car(new_car)
