@@ -124,6 +124,35 @@ def search_cars_flow():
 
     wait_for_user()
 
+# EXTRA
+def get_stats_flow():
+    print_divider()
+    cars = get_all_cars()
+
+    if not len(cars):
+        print_center("No cars in inventory. Try adding a few.")
+    else:
+        # for car in cars:
+        print_center("Car Stats")
+        total_cars = len(cars)
+        total_price = sum(car.price for car in cars)
+
+        make = {}
+        for car in cars:
+            make[car.make] = make.get(car.make, 0) + 1
+        
+        make_sorted = sorted(make.items(), key=lambda item: item[1])
+
+        most_common, count = make_sorted[-1]
+    
+        print_center(f"Total Cars in the Shop: {total_cars}")
+        print_center(f"Total Price: ${total_price}")
+        print_center(f"Average Price: ${(total_price / total_cars):.2f}")
+        print_center(f"Most Common Make: {most_common}, {count} available")
+        
+    print_divider()
+    wait_for_user()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -149,10 +178,11 @@ def show_menu():
     print_center("3. Update Car")
     print_center("4. Delete Car")
     print_center("5. Search Cars")
-    print_center("6. Exit")
+    print_center("6. Get Stats")
+    print_center("0. Exit")
     print_divider()
 
-    choice = input("Enter your selection (1-6): ")
+    choice = input("Enter a number (0 to exit): ")
     return choice
 
 def main():
@@ -166,8 +196,8 @@ def main():
             wait_for_user()
             continue
 
-        if choice < 1 or choice > 6:
-            print("ValueError:", "Please print a number between 1 to 6")
+        if choice < 0:
+            print("ValueError:", "Please print a number between 1 to 7")
             wait_for_user()
             continue
 
@@ -187,6 +217,9 @@ def main():
             search_cars_flow()
 
         elif choice == 6:
+            get_stats_flow()
+
+        elif choice == 0:
             print("Goodbye! 👋")
             break
 
