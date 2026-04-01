@@ -102,6 +102,28 @@ def delete_car_flow():
         print_divider()
         wait_for_user()
 
+def search_cars_flow():
+    print_divider()
+    print_center("Car Search")
+    print_divider()
+
+    keyword = input("Enter a search word: ")
+
+    cars = search_cars(keyword)
+
+    if len(cars) == 0:
+        print_divider()
+        print_center("Keyword returned 0 results")
+        print_divider()
+    else:
+        print_divider()
+        print_center(f"Keyword returned {len(cars)} results.")
+        for car in cars:
+            print(car)
+        print_divider()
+
+    wait_for_user()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -163,5 +185,8 @@ def main():
 
         elif choice == 4:
             delete_car_flow()
+        
+        elif choice == 5:
+            search_cars_flow()
 
 main()
