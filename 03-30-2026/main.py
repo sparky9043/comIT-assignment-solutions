@@ -153,6 +153,38 @@ def get_stats_flow():
     print_divider()
     wait_for_user()
 
+def sort_cars_flow():
+    print_divider()
+    
+    print_center("View cars in which order?")
+    print_center("1. Price: Low to High")
+    print_center("2. Price: High to Low")
+    print_center("3. Year: Oldest to Newest")
+    print_center("4. Year: Newest to Oldest")
+    
+    sort_by = int(input("Choose how to sort: "))
+
+    saved_cars = get_all_cars()
+
+    if sort_by == 1:
+        print_center("Price: Low to High")
+        sorted_cars = sorted(saved_cars, key=lambda car: car.price)
+    elif sort_by == 2:
+        print_center("Price: High to Low")
+        sorted_cars = sorted(saved_cars, key=lambda car: car.price, reverse=True)
+    elif sort_by == 3:
+        print_center("Year: Oldest to Newest")
+        sorted_cars = sorted(saved_cars, key=lambda car: car.year)
+    elif sort_by == 4:
+        print_center("Year: Newest to Oldest")
+        sorted_cars = sorted(saved_cars, key=lambda car: car.year, reverse=True)
+
+    for car in sorted_cars:
+        print(car)
+
+    print_divider()
+    wait_for_user()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -179,6 +211,7 @@ def show_menu():
     print_center("4. Delete Car")
     print_center("5. Search Cars")
     print_center("6. Get Stats")
+    print_center("7. Sorted View")
     print_center("0. Exit")
     print_divider()
 
@@ -218,6 +251,9 @@ def main():
 
         elif choice == 6:
             get_stats_flow()
+
+        elif choice == 7:
+            sort_cars_flow()
 
         elif choice == 0:
             print("Goodbye! 👋")
