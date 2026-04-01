@@ -38,6 +38,39 @@ def view_car_flow():
         print_divider()
     wait_user_enter()
 
+def update_car_flow():
+    try:
+        car_id = int(input("Enter car id: "))
+        saved_car = get_car_by_id(car_id)
+
+        if not saved_car:
+            raise ValueError("Car Not Found")
+        
+        print_divider()
+        print_center(f"Current: {saved_car}")
+        print_divider()
+
+        print("Enter values you want to update. Press Enter to keep current value")
+        
+        make = input("Enter car make: ") or saved_car.make
+        model = input("Enter car model: ") or saved_car.model
+        year = input("Enter car manufacture year (>0): ") or saved_car.year
+        price = input("Enter car price (>0.00): ") or saved_car.price
+        mileage = input("Enter car mileage: ") or saved_car.mileage
+        
+        updated_car = Car(make, model, int(year), float(price), int(mileage), id=car_id)
+        update_car(updated_car)
+        print_center('🚗 Car Updated Successfully!')
+        print_center(f"Updated: {updated_car}")
+        print_divider()
+        wait_user_enter()
+
+    except ValueError as e:
+        print_divider()
+        print_center(f"Error: {e}")
+        print_divider()
+        wait_user_enter()
+
 def print_divider(shape="=", number=80):
     """Print user-provided shape number of times
 
@@ -95,6 +128,6 @@ def main():
             view_car_flow()
         
         elif choice == 3:
-
+            update_car_flow()
 
 main()
