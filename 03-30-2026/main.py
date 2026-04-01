@@ -171,9 +171,6 @@ def main():
             wait_for_user()
             continue
 
-        if choice == 6:
-            break
-
         if choice == 1:
             add_car_flow()
 
@@ -189,4 +186,9 @@ def main():
         elif choice == 5:
             search_cars_flow()
 
-main()
+        elif choice == 6:
+            print("Goodbye! 👋")
+            break
+
+if __name__ == "__main__":
+    main()
