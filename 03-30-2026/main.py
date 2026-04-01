@@ -3,9 +3,20 @@ from database import (initialize_database, import_cars, add_car, get_all_cars,
                         get_car_by_id, update_car, delete_car, search_cars)
 
 def print_center(text):
+    """Print user-provided text to the center of 40 characters
+    
+    Args:
+        text (str): User-provided text to print to center
+    """
     print(f"{text:^40}")
 
 def print_divider(shape="=", number=40):
+    """Print user-provided shape number of times
+
+    Args:
+        shape (str): user-defined str to print
+        number (int): number of shapes to print
+    """
     print(shape * number)
 
 def show_menu():
