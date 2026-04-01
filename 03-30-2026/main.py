@@ -11,6 +11,7 @@ def print_center(text):
     print(f"{text:^80}")
 
 def add_car_flow():
+    """Add car to database"""
     try:
         make = input("Enter car make: ")
         model = input("Enter car model: ")
@@ -27,6 +28,7 @@ def add_car_flow():
         wait_for_user()
 
 def view_car_flow():
+    """View all cars in database"""
     cars = get_all_cars()
     print_divider()
     print_center("List of Cars")
@@ -39,6 +41,7 @@ def view_car_flow():
     wait_for_user()
 
 def update_car_flow():
+    """Update car in database"""
     try:
         car_id = int(input("Enter car id: "))
         saved_car = get_car_by_id(car_id)
@@ -72,6 +75,7 @@ def update_car_flow():
         wait_for_user()
 
 def delete_car_flow():
+    """Delete car in database"""
     try:
         car_id = int(input("Enter car id: "))
         saved_car = get_car_by_id(car_id)
