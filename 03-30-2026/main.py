@@ -17,19 +17,30 @@ def show_menu():
     # Return the user's input
     print_center("- MAIN MENU -")
     print_center("1. Add a car")
-    print_center("2. Add a car")
+    print_center("2. View All Cars")
+    print_center("3. Update Car")
+    print_center("4. Delete Car")
+    print_center("5. Search Cars")
+    print_center("6. Exit")
     print_divider()
 
-    choice = int(input("Enter your selection (1-6): "))
+    choice = input("Enter your selection (1-6): ")
     return choice
 
 def main():
     # initialize_database()
     # import_cars()
-    choice = show_menu()
+    while True:
+        try: 
+            choice = int(show_menu())
+        except ValueError:
+            print("Please enter a valid number")
+            continue
 
-    cars = get_all_cars()
-    for car in cars:
-        print(car)
+        if choice < 1 or choice > 6:
+            print("Please print a number between 1 to 6")
+            continue
 
+        if choice == 6:
+            break
 main()
