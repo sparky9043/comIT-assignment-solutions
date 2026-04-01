@@ -60,12 +60,28 @@ def main():
         if choice == 6:
             break
 
+        if choice == 1:
+            try:
+                make = input("Enter car make: ")
+                model = input("Enter car model: ")
+                year = int(input("Enter car manufacture year (>0): "))
+                price = float(input("Enter car price (>0.00): "))
+                mileage = int(input("Enter car mileage"))
+                
+                new_car = Car(make, model, year, price, mileage)
+                add_car(new_car)
+
+                print("🚗 Car added successfully!")
+            except ValueError:
+                print("❌ Please make sure all your values are correct")
+                wait_user_enter()
+
         if choice == 2:
             cars = get_all_cars()
             print_divider()
             print_center("List of Cars")
             if len(cars) == 0:
-                print("There are no cars in the inventory")
+                print("❌ There are no cars in the inventory")
                 wait_user_enter()
                 continue
             for car in cars:
