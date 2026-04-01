@@ -10,7 +10,7 @@ def print_center(text):
     """
     print(f"{text:^80}")
 
-def add_car_flow(Car: Car, add_car):
+def add_car_flow():
     try:
         make = input("Enter car make: ")
         model = input("Enter car model: ")
@@ -89,8 +89,12 @@ def main():
             break
 
         if choice == 1:
-            add_car_flow(Car, add_car)
+            add_car_flow()
 
-        if choice == 2:
+        elif choice == 2:
             view_car_flow()
+        
+        elif choice == 3:
+
+
 main()
