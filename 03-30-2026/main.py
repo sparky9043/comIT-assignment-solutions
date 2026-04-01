@@ -27,7 +27,7 @@ def add_car_flow():
         print("❌ Please make sure all your values are correct")
         wait_for_user()
 
-def view_car_flow():
+def view_all_cars_flow():
     """View all cars in database"""
     cars = get_all_cars()
     print_divider()
@@ -178,7 +178,7 @@ def main():
             add_car_flow()
 
         elif choice == 2:
-            view_car_flow()
+            view_all_cars_flow()
         
         elif choice == 3:
             update_car_flow()
