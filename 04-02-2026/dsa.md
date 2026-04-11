@@ -45,6 +45,8 @@ Displayed a list of numbers and convert to set to check the existence of a set o
 
 ## 4. Hashmap Basics
 
-Use hashmap to keep track of word count in a sentence and loop through the hashmap to show count \
+Two problems: \
+ 1. Hashmap word frequency checker \
+ 2. Find the index of two numbers in a list that add to a target number  \
 ![Alt text](./screenshots/03_sets_usage.png)
 
