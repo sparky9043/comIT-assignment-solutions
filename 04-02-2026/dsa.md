@@ -7,7 +7,7 @@
 | 3 | Sets Usage | `03_sets_usage.py` | ✅ Done |
 | 4 | Hashmap Basics | `04_hashmap_basics.py` | ✅ Done |
 | 5 | Two Pointers | `05_two_pointers.py` | ✅ Done |
-| 6 | Sliding Window | `06_sliding_window.py` | ⏳ Pending |
+| 6 | Sliding Window | `06_sliding_window.py` | ✅ Done |
 | 7 | Binary Search | `07_binary_search.py` | ⏳ Pending |
 | 8 | Breadth-First Search (BFS) | `08_bfs.py` | ⏳ Pending |
 | 9 | Depth-First Search (DFS) | `09_dfs.py` | ⏳ Pending |
@@ -33,7 +33,7 @@ Displayed a list of numbers and convert to set to check the existence of a set o
 
 ## 4. Hashmap Basics
 
-Two problems: \
+Two Implementations: \
  1. Hashmap word frequency checker \
  2. Find the index of two numbers in a list that add to a target number  \
 ![Alt text](./screenshots/03_sets_usage.png)
@@ -41,4 +41,12 @@ Two problems: \
 ## 5. Two Pointers
 
 Use Two Pointers to solve a classic Palindrome checker \
+![Alt text](./screenshots/05_two_pointers.png)
+
+## 5. Sliding Window
+
+Two Implementations: \
+ 1. Use fixed sliding window to determine the largest sum among all sub arrays of length k in a list of non-negative numbers \
+ 2. Use moving sliding window to find the length of the longest substring of a given string without \
+
 ![Alt text](./screenshots/05_two_pointers.png)

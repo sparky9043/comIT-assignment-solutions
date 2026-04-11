@@ -56,4 +56,6 @@ if __name__ ==  "__main__":
     k = int(input('How long do you want the list to be? '))
     res = subarray_sum_fixed(nums, k)
     print(res)
+    
+    print('How long is the unbroken substring in xyzabcaabcde?')
     print(longest_substring_no_repeat_chars('xyzabcaabcde'))
