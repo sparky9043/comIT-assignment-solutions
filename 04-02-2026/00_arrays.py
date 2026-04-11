@@ -1,7 +1,7 @@
 # Example of list
 
 fruits = ['apple', 'banana', 'grapes', 'tomato']
-
+print('Initial Array:', fruits)
 # Appending to the end of the list: O(1)
 fruits.append('kiwi')
 print('Append to the end of list:', fruits)
