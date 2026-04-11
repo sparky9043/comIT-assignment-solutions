@@ -12,5 +12,9 @@ fruits.remove('mango')
 # Reading one element inside an array: O(1)
 print('Element at index 3',fruits[3])
 
+# Reading all elements in the array: O(n)
+for fruit in fruits:
+    print(fruit)
+
 
 print(fruits)
