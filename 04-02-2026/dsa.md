@@ -3,7 +3,7 @@
 | **#** | **Data Structure / Algorithm** | **File Name** | **Status** |
 |---|---------------------------|-----------|--------|
 | 1 | Arrays Basics | `01_arrays_basics.py` | ✅ Done |
-| 2 | Strings Basics | `02_strings_basics.py` | ⏳ Pending |
+| 2 | Strings Basics | `02_strings_basics.py` | ✅ Done |
 | 3 | Sets Usage | `03_sets_usage.py` | ⏳ Pending |
 | 4 | Hashmap Basics | `04_hashmap_basics.py` | ⏳ Pending |
 | 5 | Frequency Map | `05_frequency_map.py` | ⏳ Pending |
@@ -26,8 +26,12 @@
 | 22 | Binary Tree Level Order Traversal | `22_binary_tree_level_order.py` | ⏳ Pending |
 | 23 | Flood Fill | `23_flood_fill.py` | ⏳ Pending |
 
-# 1. Arrays Basics
+## 1. Arrays Basics
 
-Displayed a basic list of fruits and showed how to read through, append, remove from array
-![Alt text](./screenshots/00_arrays.png)
+Displayed a basic list of fruits and showed how to read through, append, remove from array \
+![Alt text](./screenshots/01_array_basics.png)
 
+## 2. String Bascis
+
+Displayed two examples of inefficient and efficient way to read through and rebuild strings \
+![Alt text](./screenshots/02_strings_basics.png)
