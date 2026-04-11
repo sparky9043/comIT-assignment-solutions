@@ -1,31 +1,30 @@
 # Screenshots of DSA Implementations
 
-| # | Data Structure / Algorithm | Status |
-|---|---------------------------|--------|
-| 1 | Arrays Basics | ✅ Done |
-| 2 | Strings Basics | ⏳ Pending |
-| 3 | Sets Usage | ⏳ Pending |
-| 4 | Hashmap Basics | ⏳ Pending |
-| 5 | Frequency Map | ⏳ Pending |
-| 6 | Two Sum | ⏳ Pending |
-| 7 | Two Pointers (Opposite Direction) | ⏳ Pending |
-| 8 | Two Pointers (Same Direction) | ⏳ Pending |
-| 9 | Valid Palindrome | ⏳ Pending |
-| 10 | Middle of Linked List | ⏳ Pending |
-| 11 | Sliding Window (Fixed) | ⏳ Pending |
-| 12 | Sliding Window (Dynamic) | ⏳ Pending |
-| 13 | Max Subarray of Size K | ⏳ Pending |
-| 14 | Longest Substring Without Repeating | ⏳ Pending |
-| 15 | Binary Search (Basic) | ⏳ Pending |
-| 16 | Binary Search (First True) | ⏳ Pending |
-| 17 | Find First True | ⏳ Pending |
-| 18 | Binary Search (Rotated Array) | ⏳ Pending |
-| 19 | Find Min in Rotated Array | ⏳ Pending |
-| 20 | BFS (Tree) | ⏳ Pending |
-| 21 | BFS (Graph) | ⏳ Pending |
-| 22 | Binary Tree Level Order Traversal | ⏳ Pending |
-| 23 | Flood Fill | ⏳ Pending |
-
+| **#** | **Data Structure / Algorithm** | **File Name** | **Status** |
+|---|---------------------------|-----------|--------|
+| 1 | Arrays Basics | `01_arrays_basics.py` | ✅ Done |
+| 2 | Strings Basics | `02_strings_basics.py` | ⏳ Pending |
+| 3 | Sets Usage | `03_sets_usage.py` | ⏳ Pending |
+| 4 | Hashmap Basics | `04_hashmap_basics.py` | ⏳ Pending |
+| 5 | Frequency Map | `05_frequency_map.py` | ⏳ Pending |
+| 6 | Two Sum | `06_two_sum.py` | ⏳ Pending |
+| 7 | Two Pointers (Opposite Direction) | `07_two_pointers_opposite.py` | ⏳ Pending |
+| 8 | Two Pointers (Same Direction) | `08_two_pointers_same_direction.py` | ⏳ Pending |
+| 9 | Valid Palindrome | `09_valid_palindrome.py` | ⏳ Pending |
+| 10 | Middle of Linked List | `10_middle_of_linked_list.py` | ⏳ Pending |
+| 11 | Sliding Window (Fixed) | `11_sliding_window_fixed.py` | ⏳ Pending |
+| 12 | Sliding Window (Dynamic) | `12_sliding_window_dynamic.py` | ⏳ Pending |
+| 13 | Max Subarray of Size K | `13_max_subarray_k.py` | ⏳ Pending |
+| 14 | Longest Substring Without Repeating | `14_longest_substring_no_repeat.py` | ⏳ Pending |
+| 15 | Binary Search (Basic) | `15_binary_search_basic.py` | ⏳ Pending |
+| 16 | Binary Search (First True) | `16_binary_search_first_true.py` | ⏳ Pending |
+| 17 | Find First True | `17_find_first_true.py` | ⏳ Pending |
+| 18 | Binary Search (Rotated Array) | `18_binary_search_rotated_array.py` | ⏳ Pending |
+| 19 | Find Min in Rotated Array | `19_find_min_rotated_array.py` | ⏳ Pending |
+| 20 | BFS (Tree) | `20_bfs_tree.py` | ⏳ Pending |
+| 21 | BFS (Graph) | `21_bfs_graph.py` | ⏳ Pending |
+| 22 | Binary Tree Level Order Traversal | `22_binary_tree_level_order.py` | ⏳ Pending |
+| 23 | Flood Fill | `23_flood_fill.py` | ⏳ Pending |
 
 # 1. Arrays Basics
 
