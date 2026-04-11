@@ -4,7 +4,7 @@
 |---|---------------------------|-----------|--------|
 | 1 | Arrays Basics | `01_arrays_basics.py` | ✅ Done |
 | 2 | Strings Basics | `02_strings_basics.py` | ✅ Done |
-| 3 | Sets Usage | `03_sets_usage.py` | ⏳ Pending |
+| 3 | Sets Usage | `03_sets_usage.py` | ✅ Done |
 | 4 | Hashmap Basics | `04_hashmap_basics.py` | ⏳ Pending |
 | 5 | Frequency Map | `05_frequency_map.py` | ⏳ Pending |
 | 6 | Two Sum | `06_two_sum.py` | ⏳ Pending |
@@ -35,3 +35,9 @@ Displayed a basic list of fruits and showed how to read through, append, remove 
 
 Displayed two examples of inefficient and efficient way to read through and rebuild strings \
 ![Alt text](./screenshots/02_strings_basics.png)
+
+
+## 3. Sets Usage
+
+Displayed a list of numbers and convert to set to check the existence of a set of numbers in it \
+![Alt text](./screenshots/03_sets_usage.png)
