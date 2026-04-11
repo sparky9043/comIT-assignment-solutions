@@ -32,11 +32,28 @@ def subarray_sum_fixed(nums: list[int], k: int) -> int:
     
     return largest_sum
 
+# Find the length of the longest substring of a given string without 
+# repeating characters
 
+def longest_substring_no_repeat_chars(string: str) -> int:
+    longest = 0
+    left = 0
+    counter: dict[str, int] = {}
+
+    for right in range(len(string)):
+        current_string = string[right]
+        counter[current_string] = counter.get(current_string, 0) + 1
+        while counter[current_string] > 1:
+            longest = max(longest, right - left)
+            counter[string[left]] -= 1
+            left += 1
+    return longest
 
 if __name__ ==  "__main__":
+    # Fixed Window Example
     print('Enter a list of numbers:')
     nums = [int(x) for x in input().split()]
     k = int(input('How long do you want the list to be? '))
     res = subarray_sum_fixed(nums, k)
     print(res)
+    print(longest_substring_no_repeat_chars('xyzabcaabcde'))
