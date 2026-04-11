@@ -6,7 +6,7 @@
 | 2 | Strings Basics | `02_strings_basics.py` | ✅ Done |
 | 3 | Sets Usage | `03_sets_usage.py` | ✅ Done |
 | 4 | Hashmap Basics | `04_hashmap_basics.py` | ✅ Done |
-| 5 | Two Pointers | `05_two_pointers.py` | ⏳ Pending |
+| 5 | Two Pointers | `05_two_pointers.py` | ✅ Done |
 | 6 | Sliding Window | `06_sliding_window.py` | ⏳ Pending |
 | 7 | Binary Search | `07_binary_search.py` | ⏳ Pending |
 | 8 | Breadth-First Search (BFS) | `08_bfs.py` | ⏳ Pending |
@@ -38,3 +38,7 @@ Two problems: \
  2. Find the index of two numbers in a list that add to a target number  \
 ![Alt text](./screenshots/03_sets_usage.png)
 
+## 5. Two Pointers
+
+Use Two Pointers to solve a classic Palindrome checker \
+![Alt text](./screenshots/05_two_pointers.png)
