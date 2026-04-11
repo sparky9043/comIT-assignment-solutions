@@ -5,7 +5,7 @@
 | 1 | Arrays Basics | `01_arrays_basics.py` | ✅ Done |
 | 2 | Strings Basics | `02_strings_basics.py` | ✅ Done |
 | 3 | Sets Usage | `03_sets_usage.py` | ✅ Done |
-| 4 | Hashmap Basics | `04_hashmap_basics.py` | ⏳ Pending |
+| 4 | Hashmap Basics | `04_hashmap_basics.py` | ✅ Done |
 | 5 | Frequency Map | `05_frequency_map.py` | ⏳ Pending |
 | 6 | Two Sum | `06_two_sum.py` | ⏳ Pending |
 | 7 | Two Pointers (Opposite Direction) | `07_two_pointers_opposite.py` | ⏳ Pending |
@@ -41,3 +41,10 @@ Displayed two examples of inefficient and efficient way to read through and rebu
 
 Displayed a list of numbers and convert to set to check the existence of a set of numbers in it \
 ![Alt text](./screenshots/03_sets_usage.png)
+
+
+## 4. Hashmap Basics
+
+Use hashmap to keep track of word count in a sentence and loop through the hashmap to show count \
+![Alt text](./screenshots/03_sets_usage.png)
+
