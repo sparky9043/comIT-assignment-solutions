@@ -33,9 +33,9 @@ Displayed a list of numbers and convert to set to check the existence of a set o
 
 ## 4. Hashmap Basics
 
-Two Implementations: \
- 1. Hashmap word frequency checker \
- 2. Find the index of two numbers in a list that add to a target number  \
+Two Implementations:
+ 1. Hashmap word frequency checker
+ 2. Find the index of two numbers in a list that add to a target number 
 
 ![Alt text](./screenshots/03_sets_usage.png)
 
@@ -46,33 +46,33 @@ Use Two Pointers to solve a classic Palindrome checker \
 
 ## 6. Sliding Window
 
-Two Implementations: \
- 1. Use fixed sliding window to determine the largest sum among all sub arrays of length k in a list of non-negative numbers \
- 2. Use moving sliding window to find the length of the longest substring of a given string without \
+Two Implementations:
+ 1. Use fixed sliding window to determine the largest sum among all sub arrays of length k in a list of non-negative numbers
+ 2. Use moving sliding window to find the length of the longest substring of a given string without
 
 ![Alt text](./screenshots/06_sliding_window.png)
 
 ## 7. Binary Search
 
 Two Implementations: \
- 1. Use the Binary Search to find the first True in a monotonic list of booleans \
- 2. Find the first turning point (or the smallest number) in a rotated list of numbers \
+ 1. Use the Binary Search to find the first True in a monotonic list of booleans 
+ 2. Find the first turning point (or the smallest number) in a rotated list of numbers
 
 ![Alt text](./screenshots/07_binary_search.png)
 
 ## 8. Breadth-First Search
 
-Two Implementations: \
- 1. Use BFS to print row of levels of binary trees \
- 2. Use BFS to replace replace a neighboring cells with same ints (fill) \
+Two Implementations: 
+ 1. Use BFS to print row of levels of binary trees 
+ 2. Use BFS to replace replace a neighboring cells with same ints (fill) 
 
 ![Alt text](./screenshots/08_bfs.png)
 
 ## 9. Depth-First Search
 
-Two Implementations: \
- 1. Use DFS to find the depth level of a tree \
- 2. Use DFPS to find the number of islands on a map \
+Two Implementations: 
+ 1. Use DFS to find the depth level of a tree 
+ 2. Use DFPS to find the number of islands on a map 
 
 ![Alt text](./screenshots/09_dfs.png)
 
