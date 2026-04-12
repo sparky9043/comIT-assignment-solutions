@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Custom Apps
+    'car_log',
+    
+    # Pre-installed Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
