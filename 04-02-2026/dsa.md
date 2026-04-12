@@ -10,8 +10,8 @@
 | 6 | Sliding Window | `06_sliding_window.py` | ✅ Done |
 | 7 | Binary Search | `07_binary_search.py` | ✅ Done |
 | 8 | Breadth-First Search (BFS) | `08_bfs.py` | ✅ Done |
-| 9 | Depth-First Search (DFS) | `09_dfs.py` | ⏳ Pending |
-| 10 | Backtracking | `10_backtracking.py` | ⏳ Pending |
+| 9 | Depth-First Search (DFS) | `09_dfs.py` | ✅ Done |
+| 10 | Backtracking | `10_backtracking.py` | ✅ Done |
 | 11 | Priority Queue / Heap | `11_priority_queue_heap.py` | ⏳ Pending |
 
 ## 1. Arrays Basics
@@ -74,4 +74,11 @@ Two Implementations: \
  2. Use DFPS to find the number of islands on a map \
 
 ![Alt text](./screenshots/09_dfs.png)
+
+## 10. Backtracking
+
+Display a grid of letters and use the "exist" function to determine if a specified character exists in the grid
+
+![Alt text](./screenshots/09_dfs.png)
+
 
