@@ -1,0 +1,30 @@
+{%  extends 'car_log/base.html' %}
+
+{% block content %}
+<h2 class="text-center text-2xl font-bold">Our cars</h2>
+<ul class="flex flex-wrap gap-4">
+  {% for car in cars %}
+  <li>
+  <div class="card bg-base-100 w-96 shadow-sm">
+    <figure>
+      {% if car.image %}
+          <img src="{{ car.image.url }}" alt="{{ car.model }}" width="480" height="640">
+      {% else %}
+          <p>No image</p>
+      {% endif %}
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{ car.year }} {{ car.make }} {{ car.model }}</h2>
+      <p>Mileage: ${{ car.mileage }}</p>
+      <p>Price: ${{ car.price }}</p>
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  </li>
+  {% empty %}
+  <li>There are no cars in this dealership</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
