@@ -12,7 +12,7 @@
 | 8 | Breadth-First Search (BFS) | `08_bfs.py` | ✅ Done |
 | 9 | Depth-First Search (DFS) | `09_dfs.py` | ✅ Done |
 | 10 | Backtracking | `10_backtracking.py` | ✅ Done |
-| 11 | Priority Queue / Heap | `11_priority_queue_heap.py` | ⏳ Pending |
+| 11 | Priority Queue / Heap | `11_priority_queue_heap.py` | ✅ Done |
 
 ## 1. Arrays Basics
 
@@ -79,6 +79,12 @@ Two Implementations: \
 
 Display a grid of letters and use the "exist" function to determine if a specified character exists in the grid
 
-![Alt text](./screenshots/09_dfs.png)
+![Alt text](./screenshots/10_backtracking.png)
+
+## 11. Priority Queue/Heap
+
+Display a list of points and use prioirty queues/heaps to determine the k number of closets points
+
+![Alt text](./screenshots/11_priority_queue_heap.png)
 
 
