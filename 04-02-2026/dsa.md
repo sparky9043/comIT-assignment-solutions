@@ -54,7 +54,7 @@ Two Implementations:
 
 ## 7. Binary Search
 
-Two Implementations: \
+Two Implementations:
  1. Use the Binary Search to find the first True in a monotonic list of booleans 
  2. Find the first turning point (or the smallest number) in a rotated list of numbers
 
