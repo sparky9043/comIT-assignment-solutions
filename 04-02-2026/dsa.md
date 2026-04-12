@@ -67,3 +67,11 @@ Two Implementations: \
 
 ![Alt text](./screenshots/08_bfs.png)
 
+## 9. Depth-First Search
+
+Two Implementations: \
+ 1. Use DFS to find the depth level of a tree \
+ 2. Use DFPS to find the number of islands on a map \
+
+![Alt text](./screenshots/09_dfs.png)
+
