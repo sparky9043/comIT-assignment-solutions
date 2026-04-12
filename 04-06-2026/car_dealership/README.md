@@ -22,7 +22,6 @@ A **Django-based web application** for managing and displaying available cars in
 - **MVT Architecture** – Clean Django structure following best practices  
 
 
-
 ## ⚙️ Data Model
 
 ```python
@@ -42,6 +41,13 @@ class Car(models.Model):
 
 # ⚙️ Setup & Installation Guide
 ```
+
+### 📸 Screenshot
+
+#### Screenshot of cars/ path
+
+![Alt text](./screenshots/cars_page.png)
+
 Follow these steps to set up and run the project locally.
 
 ## 1. Clone the Repository
