@@ -4,13 +4,13 @@ from django.shortcuts import render
 
 app_name = "static_pages_templates"
 
-def home(request):
+def index(request):
     ctx = {
         'name': "Tony",
         'age': 25,
         'gains': 2344.322211
     }
-    return render(request, 'static_pages_templates/home.html', ctx)
+    return render(request, 'static_pages_templates/index.html', ctx)
 
 def contact(request):
     return render(request, 'static_pages_templates/contact.html')
