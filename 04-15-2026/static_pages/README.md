@@ -84,3 +84,5 @@ def services(request):
     return render(request, 'static_pages_templates/services.html' )
 
 ```
+
+## 📸 Screenshots
