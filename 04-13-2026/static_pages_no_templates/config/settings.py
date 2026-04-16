@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Custom Apps
+    'static_pages_no_templates',
+    
+    # Pre-installed django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
