@@ -1,5 +1,17 @@
 {% extends 'static_pages_templates/base.html' %}
 
+{% block theme %}
+data-theme="cyberpunk"
+{% endblock %}
+
+{% block h1 %}
+{% endblock %}
+
 {% block main %}
-  <h1>staff</h1>
+  <ul>
+  {% for member in staff %}
+    <li>Department: {{ member.department }}</li>
+    <li>Name: {{ member.name }}</li>
+  {% endfor %}
+  </ul>
 {% endblock %}
