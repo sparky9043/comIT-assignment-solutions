@@ -86,3 +86,15 @@ def services(request):
 ```
 
 ## 📸 Screenshots
+
+### Home
+![Home](screenshots/index.png)
+
+### Services
+![Services](screenshots/services.png)
+
+### Staff
+![Staff](screenshots/staff.png)
+
+### Contact
+![Contact](screenshots/contact.png)
