@@ -4,7 +4,9 @@ from django.http import HttpResponse
 nav = """
     <nav>
         <a href='/'>Home</a> |
-        <a href='contact/'>Contact</a>
+        <a href='/services/'>Services</a> |
+        <a href='/staff/'>Staff</a> |
+        <a href='/contact/'>Contact</a>
     </nav>
 """
 name = "Tim"
@@ -31,3 +33,9 @@ def home(request):
 
 def contact(request):
     return HttpResponse(nav + "Contact Us")
+
+def services(request):
+    return HttpResponse(nav + "Services")
+
+def staff(request):
+    return HttpResponse(nav + "Staff")
