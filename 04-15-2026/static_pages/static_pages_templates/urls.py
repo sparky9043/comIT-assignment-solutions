@@ -6,5 +6,6 @@ app_name = "static_pages_templates"
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('contact/', views.contact, name="contact")
+    path('staff/', views.staff, name="staff"),
+    path('contact/', views.contact, name="contact"),
 ]

@@ -12,5 +12,8 @@ def index(request):
     }
     return render(request, 'static_pages_templates/index.html', ctx)
 
+def staff(request):
+    return render(request, 'static_pages_templates/staff.html')
+
 def contact(request):
     return render(request, 'static_pages_templates/contact.html')
