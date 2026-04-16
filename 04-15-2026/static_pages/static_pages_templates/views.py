@@ -20,3 +20,6 @@ def staff(request):
 
 def contact(request):
     return render(request, 'static_pages_templates/contact.html')
+
+def services(request):
+    return render(request, 'static_pages_templates/services.html' )
