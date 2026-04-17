@@ -38,5 +38,5 @@ def register_view(request: HttpRequest) -> HttpResponse:
     return render(request, 'register.html')
 
 @login_required
-def dashboard_view(request: HttpRequest) -> HttpResponse:
+def dashboard(request: HttpRequest) -> HttpResponse:
     return render(request, 'dashboard.html')
