@@ -1,0 +1,54 @@
+{% extends 'animals/base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block heading %}{{ page_title }} — {{ animal_count }} animal(s){% endblock %}
+
+{% block content %}
+{#
+Automatic context from DayArchiveView / TodayArchiveView:
+day — the date as a datetime object
+object_list — all Animal objects added on that day
+Extra context from get_context_data():
+animal_count — total animals added on this day
+#}
+
+{% if object_list %}
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Weight (kg)</th>
+      <th>Born in Captivity</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for animal in object_list %}
+    <tr>
+      <td>{{ animal.name }}</td>
+      <td>{{ animal.age }}</td>
+      <td>{{ animal.weight }}</td>
+      <td>{{ animal.born_in_captivity|yesno:"Yes,No" }}</td>
+      <td>
+        <a href="{% url 'animals:animal-date-detail' day.year day.month day.day animal.pk %}">
+          View (date-verified)
+        </a> |
+        <a href="{{ animal.get_absolute_url }}">View</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No animals were added on {{ day|date:"N j, Y" }}.</p>
+{% endif %}
+
+<p>
+  <a href="{% url 'animals:animal-month-archive' day.year day.month %}">
+    Back to {{ day|date:"F Y" }}
+  </a> |
+  <a href="{% url 'animals:animal-archive-index' %}">Archive index</a>
+</p>
+
+{% endblock %}

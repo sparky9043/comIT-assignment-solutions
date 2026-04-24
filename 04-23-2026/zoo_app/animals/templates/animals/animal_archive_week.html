@@ -1,0 +1,49 @@
+{% extends 'animals/base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block heading %}{{ page_title }} — {{ animal_count }} animal(s){% endblock %}
+
+{% block content %}
+{#
+Automatic context from WeekArchiveView:
+week — the start date of the week as a datetime object
+object_list — all Animal objects added during that week
+Extra context from get_context_data():
+animal_count — total animals added this week
+#}
+
+{% if object_list %}
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Weight (kg)</th>
+      <th>Born in Captivity</th>
+      <th>Date Added</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for animal in object_list %}
+    <tr>
+      <td>{{ animal.name }}</td>
+      <td>{{ animal.age }}</td>
+      <td>{{ animal.weight }}</td>
+      <td>{{ animal.born_in_captivity|yesno:"Yes,No" }}</td>
+      <td>{{ animal.date_added }}</td>
+      <td><a href="{{ animal.get_absolute_url }}">View</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No animals were added during this week.</p>
+{% endif %}
+
+<p>
+  Week starting {{ week|date:"N j, Y" }} |
+  <a href="{% url 'animals:animal-archive-index' %}">Archive index</a>
+</p>
+
+{% endblock %}

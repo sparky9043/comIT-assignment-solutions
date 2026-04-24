@@ -1,0 +1,31 @@
+{% extends 'animals/base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block heading %}{{ page_title }}{% endblock %}
+
+{% block content %}
+{#
+Automatic context from ArchiveIndexView:
+date_list — queryset of years (as datetime objects) that have animals
+object_list — all Animal objects (latest first)
+Extra context from get_context_data():
+total_years — count of distinct years
+#}
+
+<p>The archive spans <strong>{{ total_years }}</strong> year(s).</p>
+
+{% if date_list %}
+<ul>
+  {% for year in date_list %}
+  <li>
+    <a href="{% url 'animals:animal-year-archive' year.year %}">
+      {{ year.year }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No animals have been added yet.</p>
+{% endif %}
+
+{% endblock %}

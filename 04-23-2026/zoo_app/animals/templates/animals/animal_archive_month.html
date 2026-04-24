@@ -1,0 +1,56 @@
+{% extends 'animals/base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block heading %}{{ page_title }} — {{ animal_count }} animal(s){% endblock %}
+
+{% block content %}
+{#
+Automatic context from MonthArchiveView:
+month — the month as a datetime object
+object_list — all Animal objects added that month
+Extra context from get_context_data():
+animal_count — total animals added this month
+#}
+
+{% if object_list %}
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Weight (kg)</th>
+      <th>Born in Captivity</th>
+      <th>Date Added</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for animal in object_list %}
+    <tr>
+      <td>{{ animal.name }}</td>
+      <td>{{ animal.age }}</td>
+      <td>{{ animal.weight }}</td>
+      <td>{{ animal.born_in_captivity|yesno:"Yes,No" }}</td>
+      <td>{{ animal.date_added }}</td>
+      <td>
+        <a
+          href="{% url 'animals:animal-date-detail' animal.date_added.year animal.date_added.month animal.date_added.day animal.pk %}">
+          View
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No animals were added during this month.</p>
+{% endif %}
+
+<p>
+  <a href="{% url 'animals:animal-year-archive' month.year %}">
+    Back to {{ month.year }} archive
+  </a> |
+  <a href="{% url 'animals:animal-archive-index' %}">Archive index</a>
+</p>
+
+{% endblock %}
