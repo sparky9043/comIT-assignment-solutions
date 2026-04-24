@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Installed Apps
-    "accounts",
+    "animals",
 ]
 
 MIDDLEWARE = [
