@@ -10,14 +10,14 @@
 <h1>Blog</h1>
 
 <p>
-    Logged in as <strong>{{ request.user.username }}</strong> |
-    <a href=""
+    Logged in as <strong>{{ request.user.username }}</strong>
+    {% comment %} <a href=""
        hx-post ="/logout/"
-       hx-include="[name=csrfmiddlewaretoken]">Logout</a>
-    <!--<form method="post" action="/logout/" style="display:inline;">
+       hx-include="[name=csrfmiddlewaretoken]">Logout</a> {% endcomment %}
+<form method="post" action="/logout/" style="display:inline;">
     {% csrf_token %}
     <button type="submit">Logout</button>
-    </form>-->
+    </form>
 </p>
 
 <hr>
