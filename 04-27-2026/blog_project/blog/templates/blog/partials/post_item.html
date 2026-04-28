@@ -4,13 +4,13 @@
     <p><strong>Date:</strong> {{ post.date_created|date:"Y-m-d H:i" }}</p>
     <p>{{ post.content }}</p>
 
-    <button hx-get="/posts/{{ post.pk }}/edit/"
+    <button hx-get="{% url 'post_edit' post.pk %}"
             hx-target="#post-{{ post.pk }}"
             hx-swap="outerHTML">
         Edit
     </button>
 
-    <form hx-post="/posts/{{ post.pk }}/delete/"
+    <form hx-post="{% url 'post_delete' post.pk %}"
           hx-target="#post-{{ post.pk }}"
           hx-swap="outerHTML"
           hx-confirm="Delete this post?"

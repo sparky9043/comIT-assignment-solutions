@@ -1,5 +1,5 @@
 <div id="post-{{ post.pk }}">
-    <form hx-post="/posts/{{ post.pk }}/update/"
+    <form hx-post="{% url 'post_update' post.pk %}"
           hx-target="#post-{{ post.pk }}"
           hx-swap="outerHTML">
         {% csrf_token %}
@@ -17,7 +17,7 @@
         </p>
         <button type="submit">Save</button>
         <button type="button"
-                hx-get="/posts/"
+                hx-get="{% url "post_list" %}"
                 hx-target="#post-list"
                 hx-swap="innerHTML">
             Cancel
