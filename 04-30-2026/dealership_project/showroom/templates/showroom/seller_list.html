@@ -1,0 +1,29 @@
+{% extends 'showroom/base.html' %}
+{% block title %}Sellers{% endblock %}
+{% block content %}
+<h1>Sellers</h1>
+<a href="{% url 'seller-create' %}">+ Add Seller</a>
+<table border="1">
+  <tr>
+    <th>Name</th><th>Branches</th><th>Active</th><th>Actions</th>
+  </tr>
+  {% for seller in sellers %}
+    <tr>
+      <td>
+        <a href="{% url 'seller-detail' seller.pk %}">{{ seller }}</a>
+      </td>
+      <td>
+        {# seller.branches is a ManyToManyField — iterate like any QuerySet #}
+        {% for branch in seller.branches.all %}
+          {{ branch.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </td>
+      <td>{{ seller.is_active|yesno:"Yes,No" }}</td>
+      <td>
+        <a href="{% url 'seller-update' seller.pk %}">Edit</a> |
+        <a href="{% url 'seller-delete' seller.pk %}">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

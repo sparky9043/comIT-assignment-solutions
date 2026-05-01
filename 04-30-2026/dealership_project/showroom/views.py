@@ -8,6 +8,10 @@ from django.http import HttpResponse
 from .models import Branch, Seller, Car
 from .forms  import CarForm, SellerForm
 
+from django.views import View
+from django.shortcuts import get_object_or_404
+from .models import Car
+
 
 # ── Branches ───────────────────────────────────────────────────────────────
 
@@ -124,8 +128,8 @@ class SellerDeleteView(DeleteView):
 
 class CarInlineDeleteView(DeleteView):
     model = Car
-
-    def form_valid(self, form):
+    
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
         self.object.delete()
-        # Return empty response — HTMX replaces the deleted row with nothing
         return HttpResponse('')
