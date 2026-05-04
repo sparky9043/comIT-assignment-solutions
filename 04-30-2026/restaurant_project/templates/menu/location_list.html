@@ -5,7 +5,12 @@
   <h1>Our Locations</h1>
   <ul>
   {% for location in locations %}
-    <li>{{ location.name }}</li>
+    <li>
+      <a href="#">
+      {{ location }}
+      </a>
+      Opened: {{ location.open_date|date:"M d, Y" }}
+    </li>
   {% endfor %}
   </ul>
 </main>
