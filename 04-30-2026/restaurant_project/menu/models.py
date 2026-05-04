@@ -17,7 +17,7 @@ class Chef(models.Model):
     dob = models.DateField()
     location = models.ForeignKey(
         Location,
-        related_name="locations",
+        related_name="location",
         on_delete=models.CASCADE,
     )
     is_staff = models.BooleanField(default=True)
