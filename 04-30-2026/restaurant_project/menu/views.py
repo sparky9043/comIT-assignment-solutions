@@ -109,3 +109,9 @@ class ChefUpdateView(UpdateView):
     form_class = ChefForm
     template_name = "menu/chef_create_form.html"
     success_url = reverse_lazy("menu:chef_list")
+
+
+class ChefDeleteView(DeleteView):
+    model = Chef
+    template_name = "menu/chef_delete.html"
+    success_url = reverse_lazy("menu:chef_list")

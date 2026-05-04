@@ -20,10 +20,10 @@
       {{ chef.location }}
     </td>
     <td>
+      <a href="{% url 'menu:chef_update' chef.pk %}">Edit</a> |
+      <a href="{% url 'menu:chef_delete' chef.pk %}">Delete</a>
     </td>
     {% comment %}
-    <a href="{% url 'menu:chef_update' chef.pk %}">Edit</a> |
-    <a href="{% url 'seller-delete' seller.pk %}">Delete</a>
     {% endcomment %}
   </tr>
   {% endfor %}
