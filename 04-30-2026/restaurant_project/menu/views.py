@@ -7,7 +7,7 @@ from django.views.generic import (
     DeleteView,
 )
 from .models import Location, MenuItem, Chef
-from .forms import MenuItemForm
+from .forms import MenuItemForm, ChefForm
 from django.urls import reverse_lazy
 from django.db.models import Q
 
@@ -95,3 +95,10 @@ class ChefDetailView(DetailView):
         items = self.object.menu_items.prefetch_related("locations")
         context["items"] = items
         return context
+
+
+class ChefCreateView(CreateView):
+    model = Chef
+    form_class = ChefForm
+    template_name = "menu/chef_create_form.html"
+    success_url = reverse_lazy("menu:chef_list")

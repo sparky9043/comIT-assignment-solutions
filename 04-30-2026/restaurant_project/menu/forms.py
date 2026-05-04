@@ -11,4 +11,4 @@ class MenuItemForm(forms.ModelForm):
 class ChefForm(forms.ModelForm):
     class Meta:
         model = Chef
-        fields = ["first_name", "last_name", "dob", "location", "is_staff"]
+        fields = ["first_name", "last_name", "dob", "location"]

@@ -2,6 +2,9 @@
 
 {% block main %}
 <h1>Our Chefs</h1>
+<p>
+  <a href="{% url 'menu:chef_create' %}">+ Add Chef</a>
+</p>
 <table border="1">
   <tr>
     <th>Name</th>
@@ -16,11 +19,11 @@
     <td>
       {{ chef.location }}
     </td>
-    {% comment %}
     <td>
-      <a href="{% url 'seller-update' seller.pk %}">Edit</a> |
-      <a href="{% url 'seller-delete' seller.pk %}">Delete</a>
     </td>
+    {% comment %}
+    <a href="{% url 'menu:chef_update' chef.pk %}">Edit</a> |
+    <a href="{% url 'seller-delete' seller.pk %}">Delete</a>
     {% endcomment %}
   </tr>
   {% endfor %}
