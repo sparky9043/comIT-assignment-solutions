@@ -6,7 +6,7 @@
   <ul>
   {% for location in locations %}
     <li>
-      <a href="#">
+      <a href="{% url 'menu:location_detail' location.pk %}">
       {{ location }}
       </a>
       Opened: {{ location.open_date|date:"M d, Y" }}
