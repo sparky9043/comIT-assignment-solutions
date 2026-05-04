@@ -7,9 +7,7 @@
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
   <nav>
-    <a href="{% url 'branch-list' %}">Branches</a> |
-    <a href="{% url 'car-list' %}">Cars</a> |
-    <a href="{% url 'seller-list' %}">Sellers</a>
+    <a href="{% url 'menu:location_list' %}">Locations</a> |
   </nav>
   <main>
   {% block main %} {% endblock main %}
