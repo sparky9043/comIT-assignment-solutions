@@ -4,14 +4,16 @@
 <h1>{{ chef }}</h1>
 
 <h2>Location</h2>
-<ul>{{ chef.location }}</ul>
+<p>{{ chef.location }}</p>
+<h2>Date of Birth</h2>
+<p>{{ chef.dob|date:"M. d, Y" }}</p>
 
-<h2>Cars Managed</h2>
+<h2>Recipes Created</h2>
 <ul>
   {% for item in items %}
   <li>{{ item }}</li>
   {% empty %}
-  <li>No cars managed.</li>
+  <li>No recipes created.</li>
   {% endfor %}
 </ul>
 <br>
