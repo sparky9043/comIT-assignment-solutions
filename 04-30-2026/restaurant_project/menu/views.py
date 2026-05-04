@@ -24,4 +24,6 @@ class LocationDetailView(DetailView):
 # Menu Item Views
 class MenuItemListView(ListView):
     model = MenuItem
-    # template_name =
+    template_name = "menu/menu_item_list.html"
+    context_object_name = "items"
+    queryset = MenuItem.objects.select_related("chef")

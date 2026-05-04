@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>All Menu Items</h1>
+<a href="#">+ Add Menu</a>
+
+<input type="search" name="q" placeholder="Search item by chef" hx-trigger="keyup changed delay:300ms"
+  hx-target="#car-results" hx-swap="innerHTML">
+
+<div id="item-results">
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Chef</th>
+      <th>Available Locations</th>
+    </tr>
+    {% for item in items %}
+    <tr id="item-{{ item.pk }}">
+      <td>{{ item.name }}</td>
+      <td>${{ item.price }}</td>
+      <td>{{ item.chef }}</td>
+      <td>
+        <ul>
+
+          {% for location in item.locations.all %}
+          <li>
+            {{ location.name }}
+          </li>
+          {% endfor %}
+        </ul>
+      </td>
+      {% comment %}
+      <td>
+        <a href="{% url 'car-update' car.pk %}">Edit</a> |
+        <a href="{% url 'car-delete' car.pk %}">Delete</a>
+      </td>
+      {% endcomment %}
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6">No cars found.</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock main %}
