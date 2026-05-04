@@ -75,3 +75,11 @@ class MenuItemSearchView(ListView):
             )
 
         return qs
+
+
+# Chef Views
+class ChefListView(ListView):
+    model = Chef
+    template_name = "menu/chef_list.html"
+    context_object_name = "chefs"
+    queryset = Chef.objects.prefetch_related("location")
