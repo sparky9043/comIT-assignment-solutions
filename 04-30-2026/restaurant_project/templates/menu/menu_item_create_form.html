@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form method="post">{% csrf_token %}
+  {{ form.as_div }}
+  <button type="submit">Save</button>
+  <a href="{% url 'menu:menu_item_list' %}">Cancel</a>
+</form>
+{% endblock main %}

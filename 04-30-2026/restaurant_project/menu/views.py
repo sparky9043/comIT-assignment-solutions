@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Location, MenuItem, Chef
+from .forms import MenuItemForm
+from django.urls import reverse_lazy
 
 
 # Location Views
@@ -27,3 +29,10 @@ class MenuItemListView(ListView):
     template_name = "menu/menu_item_list.html"
     context_object_name = "items"
     queryset = MenuItem.objects.select_related("chef")
+
+
+class MenuItemCreateView(CreateView):
+    model = MenuItem
+    form_class = MenuItemForm
+    template_name = "menu/menu_item_create_form.html"
+    success_url = reverse_lazy("menu:menu_item_list")
