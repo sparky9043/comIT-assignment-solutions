@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+from .models import Location
 
 # Create your views here.
 
 
-class HomeView(TemplateView):
-    template_name = "menu/home.html"
+class LocationList(ListView):
+    model = Location
+    template_name = "menu/location_list.html"
