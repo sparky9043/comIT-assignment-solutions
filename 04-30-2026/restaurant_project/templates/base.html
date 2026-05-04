@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <nav>
+    <a href="{% url 'branch-list' %}">Branches</a> |
+    <a href="{% url 'car-list' %}">Cars</a> |
+    <a href="{% url 'seller-list' %}">Sellers</a>
+  </nav>
+  <main>
   {% block main %} {% endblock main %}
+  </main>
+
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </body>
 </html>

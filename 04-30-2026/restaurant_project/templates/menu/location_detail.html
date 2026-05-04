@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 
 {% block main %}
-<main>
-  <h1>{{ location }}</h1>
-  <p>
-    Opened on:
-    {{ location.open_date|date:"M d, Y" }}
-  </p>
-  <h2>Chefs at this location</h2>
-  <ul>
-    {% for chef in chefs %}
-    <li>{{ chef }}</li>
-    {% empty %}
-    <li>no chefs at this location</li>
-    {% endfor %}
-  </ul>
+<h1>{{ location }}</h1>
+<p>
+  Opened on:
+  {{ location.open_date|date:"M d, Y" }}
+</p>
+<h2>Chefs at this location</h2>
+<ul>
+  {% for chef in chefs %}
+  <li>{{ chef }}</li>
+  {% empty %}
+  <li>no chefs at this location</li>
+  {% endfor %}
+</ul>
   
 <table border="1">
   <tr>
@@ -44,6 +43,4 @@
     <tr><td colspan="6">No items at this location.</td></tr>
   {% endfor %}
 </table>
-  
-</main>
 {% endblock main %}
