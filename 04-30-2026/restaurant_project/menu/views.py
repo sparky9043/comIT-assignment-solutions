@@ -83,3 +83,9 @@ class ChefListView(ListView):
     template_name = "menu/chef_list.html"
     context_object_name = "chefs"
     queryset = Chef.objects.prefetch_related("location")
+
+
+class ChefDetailView(DetailView):
+    model = Chef
+    template_name = "menu/chef_detail.html"
+    context_object_name = "chef"

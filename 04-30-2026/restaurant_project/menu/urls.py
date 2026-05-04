@@ -11,6 +11,7 @@ from .views import (
     MenuItemSearchView,
     # Chef Views
     ChefListView,
+    ChefDetailView,
 )
 
 app_name = "menu"
@@ -29,4 +30,5 @@ urlpatterns = [
     path("items/search", MenuItemSearchView.as_view(), name="menu_item_search"),
     # Chefs
     path("chefs/", ChefListView.as_view(), name="chef_list"),
+    path("chefs/<int:pk>/", ChefDetailView.as_view(), name="chef_detail"),
 ]

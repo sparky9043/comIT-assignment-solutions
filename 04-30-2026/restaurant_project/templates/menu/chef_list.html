@@ -11,7 +11,7 @@
   {% for chef in chefs %}
   <tr>
     <td>
-      <a href="#">{{ chef }}</a>
+      <a href="{% url 'menu:chef_detail' chef.pk %}">{{ chef }}</a>
     </td>
     <td>
       {{ chef.location }}
