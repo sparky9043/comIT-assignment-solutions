@@ -16,14 +16,34 @@
     {% endfor %}
   </ul>
   
-  <h2>Items at this location</h2>
-  <ul>
-    {% for item in items %}
-    <li>{{ item }}</li>
-    {% empty %}
-    <li>no chefs at this location</li>
-    {% endfor %}
-  </ul>
+<table border="1">
+  <tr>
+    <th>Course</th><th>Item Name</th><th>Price</th>
+    <th>Chef</th><th>Actions</th>
+  </tr>
+  {% for item in items %}
+    {# car comes from ctx['cars'] = branch.cars.select_related('seller') #}
+    <tr id="item-{{ item.pk }}">
+      <td>{{ item.course }}</td>
+      <td>{{ item.name }}</td>
+      <td>${{ item.price }}</td>
+      <td>{{ item.chef }}</td>
+      <td>
+        {% comment %} <a href="{% url 'car-update' car.pk %}">Edit</a> {% endcomment %}
+        <!-- HTMX inline delete: replaces #car-{{ car.pk }} with empty string -->
+        <button
+          {% comment %} hx-delete="" {% endcomment %}
+          hx-target="#item-{{ item.pk }}"
+          hx-swap="outerHTML"
+          hx-confirm="Delete this Menu Item?">
+          Delete
+        </button>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6">No items at this location.</td></tr>
+  {% endfor %}
+</table>
   
 </main>
 {% endblock main %}
