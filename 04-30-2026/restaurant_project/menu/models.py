@@ -17,7 +17,7 @@ class Chef(models.Model):
     dob = models.DateField()
     location = models.ForeignKey(
         Location,
-        related_name="location",
+        related_name="chefs",
         on_delete=models.CASCADE,
     )
     is_staff = models.BooleanField(default=True)
@@ -39,11 +39,11 @@ class MenuItem(models.Model):
     course = models.CharField(max_length=100, choices=MENU_ITEM_COURSES)
     locations = models.ManyToManyField(
         Location,
-        related_name="locations",
+        related_name="menu_items",
     )
     chef = models.ForeignKey(
         Chef,
-        related_name="chefs",
+        related_name="menu_items",
         on_delete=models.SET_NULL,
         null=True,
     )
