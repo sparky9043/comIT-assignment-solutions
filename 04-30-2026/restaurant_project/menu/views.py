@@ -55,3 +55,8 @@ class MenuItemDeleteView(DeleteView):
     model = MenuItem
     template_name = "menu/menu_item_delete.html"
     success_url = reverse_lazy("menu:menu_item_list")
+
+
+class MenuItemSearchView(ListView):
+    model = MenuItem
+    # template_name = ''
