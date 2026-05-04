@@ -82,10 +82,16 @@ class ChefListView(ListView):
     model = Chef
     template_name = "menu/chef_list.html"
     context_object_name = "chefs"
-    queryset = Chef.objects.prefetch_related("location")
+    queryset = Chef.objects.select_related("location")
 
 
 class ChefDetailView(DetailView):
     model = Chef
     template_name = "menu/chef_detail.html"
     context_object_name = "chef"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        items = self.object.menu_items.prefetch_related("locations")
+        context["items"] = items
+        return context
