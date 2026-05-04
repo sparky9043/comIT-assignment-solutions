@@ -9,6 +9,7 @@ from .views import (
     MenuItemUpdateView,
     MenuItemDeleteView,
     MenuItemSearchView,
+    MenuItemInlineDelete,
     # Chef Views
     ChefListView,
     ChefDetailView,
@@ -29,6 +30,11 @@ urlpatterns = [
     path("items/<int:pk>/edit/", MenuItemUpdateView.as_view(), name="menu_item_update"),
     path(
         "items/<int:pk>/delete/", MenuItemDeleteView.as_view(), name="menu_item_delete"
+    ),
+    path(
+        "items/<int:pk>/inline-delete/",
+        MenuItemInlineDelete.as_view(),
+        name="menu_item_inline_delete",
     ),
     path("items/search", MenuItemSearchView.as_view(), name="menu_item_search"),
     # Chefs

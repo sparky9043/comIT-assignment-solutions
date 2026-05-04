@@ -10,6 +10,7 @@ from .models import Location, MenuItem, Chef
 from .forms import MenuItemForm, ChefForm
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.http import HttpResponse
 
 
 # Location Views
@@ -75,6 +76,16 @@ class MenuItemSearchView(ListView):
             )
 
         return qs
+
+
+class MenuItemInlineDelete(DeleteView):
+    model = MenuItem
+    success_url = reverse_lazy("menu:location_list")
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponse("")
 
 
 # Chef Views
