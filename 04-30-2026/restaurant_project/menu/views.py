@@ -9,6 +9,7 @@ from django.views.generic import (
 from .models import Location, MenuItem, Chef
 from .forms import MenuItemForm
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 
 # Location Views
@@ -59,4 +60,18 @@ class MenuItemDeleteView(DeleteView):
 
 class MenuItemSearchView(ListView):
     model = MenuItem
-    # template_name = ''
+    template_name = "menu/partials/menu_item_table.html"
+    context_object_name = "items"
+
+    def get_queryset(self):
+        q = self.request.GET.get("q", "")
+        qs = MenuItem.objects.select_related("chef")
+        if q:
+            qs = qs.filter(
+                Q(name__icontains=q)
+                | Q(chef__last_name__icontains=q)
+                | Q(chef__first_name__icontains=q)
+                | Q(locations__name__icontains=q)
+            )
+
+        return qs

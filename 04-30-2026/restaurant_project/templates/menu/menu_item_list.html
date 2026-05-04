@@ -4,8 +4,9 @@
 <h1>All Menu Items</h1>
 <a href="{% url 'menu:menu_item_create' %}">+ Add Item</a>
 
-<input type="search" name="q" placeholder="Search item by chef" hx-trigger="keyup changed delay:300ms"
-  hx-target="#car-results" hx-swap="innerHTML">
+<input type="search" name="q" placeholder="Search by item name, chef, location"
+  hx-get="{% url 'menu:menu_item_search' %}" hx-trigger="keyup changed delay:300ms" hx-target="#item-results"
+  hx-swap="innerHTML">
 
 <div id="item-results">
   {% include 'menu/partials/menu_item_table.html' %}

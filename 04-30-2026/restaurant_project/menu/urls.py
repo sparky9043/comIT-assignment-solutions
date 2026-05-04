@@ -6,6 +6,7 @@ from .views import (
     MenuItemCreateView,
     MenuItemUpdateView,
     MenuItemDeleteView,
+    MenuItemSearchView,
 )
 
 app_name = "menu"
@@ -21,4 +22,5 @@ urlpatterns = [
     path(
         "items/<int:pk>/delete/", MenuItemDeleteView.as_view(), name="menu_item_delete"
     ),
+    path("items/search", MenuItemSearchView.as_view(), name="menu_item_search"),
 ]
