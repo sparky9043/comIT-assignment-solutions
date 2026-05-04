@@ -2,6 +2,11 @@
 
 {% block main %}
 <main>
-  <h1>This is the main page</h1>
+  <h1>Our Locations</h1>
+  <ul>
+  {% for location in locations %}
+    <li>{{ location.name }}</li>
+  {% endfor %}
+  </ul>
 </main>
 {% endblock main %}

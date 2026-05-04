@@ -7,4 +7,5 @@ from .models import Location
 
 class LocationList(ListView):
     model = Location
+    context_object_name = "locations"
     template_name = "menu/location_list.html"
