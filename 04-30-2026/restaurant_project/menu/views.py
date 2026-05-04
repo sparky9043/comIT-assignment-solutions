@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Location, MenuItem, Chef
 from .forms import MenuItemForm
 from django.urls import reverse_lazy
@@ -32,6 +32,13 @@ class MenuItemListView(ListView):
 
 
 class MenuItemCreateView(CreateView):
+    model = MenuItem
+    form_class = MenuItemForm
+    template_name = "menu/menu_item_create_form.html"
+    success_url = reverse_lazy("menu:menu_item_list")
+
+
+class MenuItemUpdateView(UpdateView):
     model = MenuItem
     form_class = MenuItemForm
     template_name = "menu/menu_item_create_form.html"

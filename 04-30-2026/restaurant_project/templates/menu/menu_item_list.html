@@ -14,6 +14,7 @@
       <th>Price</th>
       <th>Chef</th>
       <th>Available Locations</th>
+      <th>Actions</th>
     </tr>
     {% for item in items %}
     <tr id="item-{{ item.pk }}">
@@ -22,17 +23,20 @@
       <td>{{ item.chef }}</td>
       <td>
         <ul>
-
           {% for location in item.locations.all %}
           <li>
-            {{ location.name }}
+            <a href="{% url 'menu:location_detail' location.pk %}">
+              {{ location.name }}
+            </a>
           </li>
           {% endfor %}
         </ul>
       </td>
+      <td>
+        <a href="{% url 'menu:menu_item_update' item.pk %}">Edit</a> |
+      </td>
       {% comment %}
       <td>
-        <a href="{% url 'car-update' car.pk %}">Edit</a> |
         <a href="{% url 'car-delete' car.pk %}">Delete</a>
       </td>
       {% endcomment %}
