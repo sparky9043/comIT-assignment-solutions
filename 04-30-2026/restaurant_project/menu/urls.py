@@ -5,6 +5,7 @@ from .views import (
     MenuItemListView,
     MenuItemCreateView,
     MenuItemUpdateView,
+    MenuItemDeleteView,
 )
 
 app_name = "menu"
@@ -17,4 +18,7 @@ urlpatterns = [
     path("items/", MenuItemListView.as_view(), name="menu_item_list"),
     path("items/add", MenuItemCreateView.as_view(), name="menu_item_create"),
     path("items/<int:pk>/edit/", MenuItemUpdateView.as_view(), name="menu_item_update"),
+    path(
+        "items/<int:pk>/delete/", MenuItemDeleteView.as_view(), name="menu_item_delete"
+    ),
 ]
