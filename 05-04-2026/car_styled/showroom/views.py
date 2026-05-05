@@ -12,16 +12,37 @@ from django.http import HttpResponse
 from .models import Branch, Seller, Car
 from .forms import CarForm, SellerForm
 
+# Authentication
+from django.contrib.auth import login
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.edit import CreateView
+from .forms import RegisterForm
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class RegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = "showroom/auth/register.html"
+    success_url = reverse_lazy("branch-list")
+
+    def form_valid(self, form):
+        # Save the user, then log them in immediately
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
+
+
 # ── Branches ───────────────────────────────────────────────────────────────
 
 
-class BranchListView(ListView):
+class BranchListView(LoginRequiredMixin, ListView):
     model = Branch
     template_name = "showroom/branch_list.html"
     context_object_name = "branches"
 
 
-class BranchDetailView(DetailView):
+class BranchDetailView(LoginRequiredMixin, DetailView):
     model = Branch
     template_name = "showroom/branch_detail.html"
     context_object_name = "branch"
@@ -39,7 +60,7 @@ class BranchDetailView(DetailView):
 # ── Cars ───────────────────────────────────────────────────────────────────
 
 
-class CarListView(ListView):
+class CarListView(LoginRequiredMixin, ListView):
     model = Car
     template_name = "showroom/car_list.html"
     context_object_name = "cars"
@@ -47,21 +68,21 @@ class CarListView(ListView):
     queryset = Car.objects.select_related("branch", "seller")
 
 
-class CarCreateView(CreateView):
+class CarCreateView(LoginRequiredMixin, CreateView):
     model = Car
     form_class = CarForm
     template_name = "showroom/car_form.html"
     success_url = reverse_lazy("car-list")
 
 
-class CarUpdateView(UpdateView):
+class CarUpdateView(LoginRequiredMixin, UpdateView):
     model = Car
     form_class = CarForm
     template_name = "showroom/car_form.html"
     success_url = reverse_lazy("car-list")
 
 
-class CarDeleteView(DeleteView):
+class CarDeleteView(LoginRequiredMixin, DeleteView):
     model = Car
     template_name = "showroom/car_confirm_delete.html"
     success_url = reverse_lazy("car-list")
@@ -70,7 +91,7 @@ class CarDeleteView(DeleteView):
 # ── HTMX: live search (returns a partial HTML fragment) ────────────────────
 
 
-class CarSearchView(ListView):
+class CarSearchView(LoginRequiredMixin, ListView):
     model = Car
     # Returns a partial template, not a full page
     template_name = "showroom/partials/car_table.html"
@@ -88,17 +109,25 @@ class CarSearchView(ListView):
         return qs
 
 
+class CarInlineDeleteView(LoginRequiredMixin, DeleteView):
+    model = Car
+
+    def form_valid(self, form):
+        self.object.delete()
+        return HttpResponse("")
+
+
 # ── Sellers ────────────────────────────────────────────────────────────────
 
 
-class SellerListView(ListView):
+class SellerListView(LoginRequiredMixin, ListView):
     model = Seller
     template_name = "showroom/seller_list.html"
     context_object_name = "sellers"
     queryset = Seller.objects.prefetch_related("branches")
 
 
-class SellerDetailView(DetailView):
+class SellerDetailView(LoginRequiredMixin, DetailView):
     model = Seller
     template_name = "showroom/seller_detail.html"
     context_object_name = "seller"
@@ -109,21 +138,21 @@ class SellerDetailView(DetailView):
         return ctx
 
 
-class SellerCreateView(CreateView):
+class SellerCreateView(LoginRequiredMixin, CreateView):
     model = Seller
     form_class = SellerForm
     template_name = "showroom/seller_form.html"
     success_url = reverse_lazy("seller-list")
 
 
-class SellerUpdateView(UpdateView):
+class SellerUpdateView(LoginRequiredMixin, UpdateView):
     model = Seller
     form_class = SellerForm
     template_name = "showroom/seller_form.html"
     success_url = reverse_lazy("seller-list")
 
 
-class SellerDeleteView(DeleteView):
+class SellerDeleteView(LoginRequiredMixin, DeleteView):
     model = Seller
     template_name = "showroom/seller_confirm_delete.html"
     success_url = reverse_lazy("seller-list")
@@ -132,7 +161,7 @@ class SellerDeleteView(DeleteView):
 # ── HTMX: live seller search (returns a partial HTML fragment) ─────────────
 
 
-class SellerSearchView(ListView):
+class SellerSearchView(LoginRequiredMixin, ListView):
     model = Seller
     # Returns a partial template, not a full page
     template_name = "showroom/partials/seller_cards.html"

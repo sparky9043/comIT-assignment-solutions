@@ -116,3 +116,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+# Where to send unauthenticated users who hit a protected page
+LOGIN_URL = "/login/"
+
+# Where to send users after a successful login
+LOGIN_REDIRECT_URL = "/"
+
+# Where to send users after logout
+LOGOUT_REDIRECT_URL = "/login/"

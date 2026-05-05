@@ -1,3 +1,7 @@
+# showroom/admin.py
 from django.contrib import admin
+from .models import Branch, Seller, Car
 
-# Register your models here.
+admin.site.register(Branch)
+admin.site.register(Seller)
+admin.site.register(Car)
