@@ -24,6 +24,7 @@
     <a href="{% url 'register' %}">Register</a>
     {% endif %}
   </nav>
+  {% include 'showroom/partials/message_toast.html' %}
   <hr>
   <main>
     {% block content %}{% endblock %}
