@@ -17,8 +17,23 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView
 from .forms import RegisterForm
+from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class UserLoginView(LoginView):
+    template_name = "showroom/auth/login.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, "Login Successful")
+        return super().form_valid(form)
+
+
+class UserLogoutView(LogoutView):
+    def post(self, request, *args, **kwargs):
+        messages.success(self.request, "Logout Successful")
+        return super().post(request, *args, **kwargs)
 
 
 class RegisterView(CreateView):

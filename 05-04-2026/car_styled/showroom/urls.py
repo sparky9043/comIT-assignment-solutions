@@ -6,10 +6,10 @@ urlpatterns = [
     # ── Auth ──────────────────────────────────────────────────────────────
     path(
         "login/",
-        LoginView.as_view(template_name="showroom/auth/login.html"),
+        views.UserLoginView.as_view(),
         name="login",
     ),
-    path("logout/", LogoutView.as_view(), name="logout"),
+    path("logout/", views.UserLogoutView.as_view(), name="logout"),
     path("register/", views.RegisterView.as_view(), name="register"),
     # ── Branches ──────────────────────────────────────────────────────────
     path("", views.BranchListView.as_view(), name="branch-list"),
