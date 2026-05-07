@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Product Catalog{% endblock %}</title>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'catalog:list' %}">All Products</a> |
+    <a href="{% url 'catalog:create' %}">Add Product</a>
+</nav>
+
+<hr>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

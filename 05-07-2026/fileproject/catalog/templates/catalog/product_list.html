@@ -1,0 +1,33 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+
+{% if products %}
+    {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+
+            {% if product.picture_1 %}
+                <img src="{{ product.picture_1.url }}" alt="Picture 1 of {{ product.name }}" width="200">
+            {% endif %}
+            {% if product.picture_2 %}
+                <img src="{{ product.picture_2.url }}" alt="Picture 2 of {{ product.name }}" width="200">
+            {% endif %}
+
+            <p>
+                <a href="{% url 'catalog:detail' product.pk %}">View</a> |
+                <a href="{% url 'catalog:update' product.pk %}">Edit</a> |
+                <a href="{% url 'catalog:delete' product.pk %}">Delete</a>
+            </p>
+        </div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No products yet. <a href="{% url 'catalog:create' %}">Add one.</a></p>
+{% endif %}
+{% endblock %}
