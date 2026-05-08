@@ -1,0 +1,75 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}{% if object %}Edit{% else %}Add{% endif %} Product{% endblock %}
+
+{% block content %}
+<h1>{% if object %}Edit {{ object.name }}{% else %}Add Product{% endif %}</h1>
+
+<!--
+    enctype="multipart/form-data" is REQUIRED whenever a form includes file inputs.
+    Without it the browser sends only the filename string, not the file bytes,
+    and request.FILES will be empty on the server side.
+-->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>
+        <label for="{{ form.name.id_for_label }}">Name</label><br>
+        {{ form.name }}
+        {{ form.name.errors }}
+    </p>
+
+    <p>
+        <label for="{{ form.description.id_for_label }}">Description</label><br>
+        {{ form.description }}
+        {{ form.description.errors }}
+    </p>
+
+    <p>
+        <label for="{{ form.price.id_for_label }}">Price</label><br>
+        {{ form.price }}
+        {{ form.price.errors }}
+    </p>
+
+    <fieldset>
+        <legend>Picture 1</legend>
+        <p>
+            <label for="{{ form.picture_1.id_for_label }}">Upload a file</label><br>
+            {{ form.picture_1 }}
+            {{ form.picture_1.errors }}
+        </p>
+        <p>
+            <label for="{{ form.picture_1_url.id_for_label }}">— or paste a URL</label><br>
+            {{ form.picture_1_url }}
+            {{ form.picture_1_url.errors }}
+        </p>
+        {% if object.picture_1 %}
+            <p>Current:<br>
+            <img src="{{ object.picture_1.url }}" width="100" alt="current picture 1"></p>
+        {% endif %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Picture 2</legend>
+        <p>
+            <label for="{{ form.picture_2.id_for_label }}">Upload a file</label><br>
+            {{ form.picture_2 }}
+            {{ form.picture_2.errors }}
+        </p>
+        <p>
+            <label for="{{ form.picture_2_url.id_for_label }}">— or paste a URL</label><br>
+            {{ form.picture_2_url }}
+            {{ form.picture_2_url.errors }}
+        </p>
+        {% if object.picture_2 %}
+            <p>Current:<br>
+            <img src="{{ object.picture_2.url }}" width="100" alt="current picture 2"></p>
+        {% endif %}
+    </fieldset>
+
+    <p>
+        <button type="submit">Save</button>
+        <a href="{% url 'catalog:list' %}">Cancel</a>
+    </p>
+</form>
+{% endblock %}

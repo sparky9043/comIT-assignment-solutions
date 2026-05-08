@@ -73,7 +73,7 @@ class MenuItemSearchView(ListView):
                 | Q(chef__last_name__icontains=q)
                 | Q(chef__first_name__icontains=q)
                 | Q(locations__name__icontains=q)
-            )
+            ).distinct()
 
         return qs
 
