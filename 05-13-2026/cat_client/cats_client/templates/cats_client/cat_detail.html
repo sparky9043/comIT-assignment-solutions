@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ cat.name }}</title></head>
+<body>
+
+<h1>{{ cat.name }}</h1>
+
+<ul>
+  <li><strong>ID:</strong> {{ cat.id }}</li>
+  <li><strong>Kind:</strong> {{ cat.kind }}</li>
+  <li><strong>Age:</strong> {{ cat.age }}</li>
+  <li><strong>Weight:</strong> {{ cat.weight }} kg</li>
+  <li><strong>Vaccinated:</strong> {{ cat.vaccinated|yesno:"Yes,No" }}</li>
+</ul>
+
+<a href="{% url 'cat-update' cat.id %}">Edit</a> |
+<a href="{% url 'cat-delete' cat.id %}">Delete</a> |
+<a href="{% url 'cat-list' %}">Back to list</a>
+
+</body>
+</html>

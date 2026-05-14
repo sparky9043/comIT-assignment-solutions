@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Delete {{ cat.name }}</title></head>
+<body>
+
+<h1>Delete {{ cat.name }}?</h1>
+<p>Are you sure you want to delete <strong>{{ cat.name }}</strong> ({{ cat.kind }})?
+   This action cannot be undone.</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+  <a href="{% url 'cat-detail' cat.id %}">Cancel</a>
+</form>
+
+</body>
+</html>

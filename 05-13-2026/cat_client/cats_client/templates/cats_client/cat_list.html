@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cats</title></head>
+<body>
+
+<h1>All Cats</h1>
+<a href="{% url 'cat-create' %}">Add New Cat</a>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Kind</th>
+      <th>Age</th>
+      <th>Weight (kg)</th>
+      <th>Vaccinated</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cat in cats %}
+    <tr>
+      <td>{{ cat.id }}</td>
+      <td>{{ cat.name }}</td>
+      <td>{{ cat.kind }}</td>
+      <td>{{ cat.age }}</td>
+      <td>{{ cat.weight }}</td>
+      <td>{{ cat.vaccinated|yesno:"Yes,No" }}</td>
+      <td>
+        <a href="{% url 'cat-detail' cat.id %}">View</a> |
+        <a href="{% url 'cat-update' cat.id %}">Edit</a> |
+        <a href="{% url 'cat-delete' cat.id %}">Delete</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">No cats found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
