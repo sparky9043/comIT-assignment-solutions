@@ -1,0 +1,54 @@
+<h1>Sales Data</h1>
+
+<!-- Search -->
+<form method="get">
+    <input type="text" name="q" placeholder="Search product or customer...">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<!-- Summary Table -->
+<h2>Monthly Summary</h2>
+<table border="1">
+    <thead>
+        <tr><th>Year</th><th>Month</th><th>Total Revenue</th><th>Total Sales</th></tr>
+    </thead>
+    <tbody>
+        {% for item in summary %}
+        <tr>
+            <td>{{ item.year }}</td>
+            <td>{{ item.month }}</td>
+            <td>€{{ item.total_revenue|floatformat:2 }}</td>
+            <td>{{ item.count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Data Table -->
+<h2>All Records</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th><a href="{% url 'rename-column' 'timestamp' %}">{{ labels.timestamp }}</a></th>
+            <th><a href="{% url 'rename-column' 'product' %}">{{ labels.product }}</a></th>
+            <th><a href="{% url 'rename-column' 'revenue' %}">{{ labels.revenue }}</a></th>
+            <th><a href="{% url 'rename-column' 'customer_name' %}">{{ labels.customer_name }}</a></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.timestamp }}</td>
+            <td>{{ sale.product }}</td>
+            <td>€{{ sale.revenue }}</td>
+            <td>{{ sale.customer_name }}</td>
+            <td><a href="{% url 'sale-edit' sale.pk %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
