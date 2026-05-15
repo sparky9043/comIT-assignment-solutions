@@ -1,0 +1,31 @@
+{% extends "store/base.html" %}
+{% block title %} — Login{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[70vh] items-center justify-center">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title text-2xl mb-4">🍉 Sign In</h2>
+
+      {% if messages %}
+        {% for m in messages %}
+          <div class="alert alert-error"><span>{{ m }}</span></div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST" action="/login/">
+        {% csrf_token %}
+        <label class="form-control mb-3">
+          <span class="label-text">Username</span>
+          <input name="username" type="text" class="input input-bordered" required />
+        </label>
+        <label class="form-control mb-6">
+          <span class="label-text">Password</span>
+          <input name="password" type="password" class="input input-bordered" required />
+        </label>
+        <button class="btn btn-primary w-full">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

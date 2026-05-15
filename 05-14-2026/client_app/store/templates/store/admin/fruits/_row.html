@@ -1,0 +1,37 @@
+{% if not deleted %}
+<tr id="fruit-row-{{ fruit.id }}">
+  <td>{{ fruit.id }}</td>
+
+  <td>{{ fruit.name }}</td>
+  <td>{{ fruit.weight_kg }}</td>
+  <td>${{ fruit.price_per_kg }}</td>
+
+  <td class="flex gap-2">
+    <!--
+      hx-get    : fetch the edit form partial
+      hx-target : replace this entire row
+      hx-swap   : outerHTML so the <tr> is fully replaced
+    -->
+    <button class="btn btn-xs btn-warning"
+            hx-get="/admin/fruits/{{ fruit.id }}/edit/"
+            hx-target="#fruit-row-{{ fruit.id }}"
+            hx-swap="outerHTML">
+      Edit
+    </button>
+
+    <!--
+      hx-delete  : send DELETE request
+      hx-target  : replace the row
+      hx-swap    : outerHTML removes the row from DOM
+      hx-confirm : native browser confirm dialog before deletion
+    -->
+    <button class="btn btn-xs btn-error"
+            hx-delete="/admin/fruits/{{ fruit.id }}/delete/"
+            hx-target="#fruit-row-{{ fruit.id }}"
+            hx-swap="outerHTML"
+            hx-confirm="Delete {{ fruit.name }}?">
+      Delete
+    </button>
+  </td>
+</tr>
+{% endif %}

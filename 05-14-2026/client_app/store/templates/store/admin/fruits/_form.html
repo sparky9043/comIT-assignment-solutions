@@ -1,0 +1,28 @@
+<!-- Inline edit or create form row — swapped in by HTMX -->
+<tr id="{% if fruit %}fruit-row-{{ fruit.id }}{% else %}fruit-new-row{% endif %}">
+  <td>{{ fruit.id|default:"—" }}</td>
+  <td>
+    <form hx-post="{% if action == 'edit' %}/admin/fruits/{{ fruit.id }}/edit/{% else %}/admin/fruits/create/{% endif %}"
+          hx-target="#{% if fruit %}fruit-row-{{ fruit.id }}{% else %}fruit-tbody{% endif %}"
+          hx-swap="{% if action == 'edit' %}outerHTML{% else %}afterbegin{% endif %}"
+          class="flex flex-wrap gap-2 items-center">
+      {% csrf_token %}
+      <input name="name" value="{{ fruit.name|default:'' }}"
+             class="input input-bordered input-xs w-28" placeholder="Name" required />
+      <input name="weight_kg" value="{{ fruit.weight_kg|default:'' }}" type="number" step="0.001"
+             class="input input-bordered input-xs w-24" placeholder="kg" required />
+      <input name="price_per_kg" value="{{ fruit.price_per_kg|default:'' }}" type="number" step="0.01"
+             class="input input-bordered input-xs w-24" placeholder="$/kg" required />
+      <button class="btn btn-xs btn-success">Save</button>
+      <!-- Cancel re-fetches the original read-only row -->
+      {% if action == "edit" %}
+        <button type="button" class="btn btn-xs btn-ghost"
+                hx-get="/admin/fruits/{{ fruit.id }}/edit/"
+                hx-target="#fruit-row-{{ fruit.id }}"
+                hx-swap="outerHTML">
+          Cancel
+        </button>
+      {% endif %}
+    </form>
+  </td>
+</tr>

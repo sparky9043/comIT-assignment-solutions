@@ -1,0 +1,89 @@
+{% if not deleted %}
+<div class="card bg-base-100 shadow" id="cart-card-{{ cart.id }}">
+  <div class="card-body p-4">
+
+    <div class="flex justify-between items-center">
+      <h3 class="card-title text-base">Cart #{{ cart.id }}
+        <span class="badge badge-ghost text-xs">owner: {{ cart.owner }}</span>
+      </h3>
+      <!--
+        hx-delete  : delete the cart
+        hx-target  : the card itself
+        hx-swap    : outerHTML removes the card from the grid
+      -->
+      <button class="btn btn-xs btn-error"
+              hx-delete="/admin/carts/{{ cart.id }}/delete/"
+              hx-target="#cart-card-{{ cart.id }}"
+              hx-swap="outerHTML"
+              hx-confirm="Delete Cart #{{ cart.id }}?">
+        Delete Cart
+      </button>
+    </div>
+
+    <!-- Items table -->
+    <table class="table table-xs mt-2">
+      <thead>
+        <tr><th>Fruit</th><th>Qty (kg)</th><th>Subtotal</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for item in cart.items %}
+        <tr id="item-row-{{ item.id }}">
+          <td>{{ item.fruit_name }}</td>
+          <td>
+            <!-- Inline qty edit form -->
+            <form hx-post="/admin/carts/{{ cart.id }}/items/{{ item.id }}/update/"
+                  hx-target="#cart-card-{{ cart.id }}"
+                  hx-swap="outerHTML"
+                  class="flex gap-1">
+              {% csrf_token %}
+              <input name="quantity_kg" value="{{ item.quantity_kg }}"
+                     type="number" step="0.001" min="0.001"
+                     class="input input-bordered input-xs w-20" />
+              <button class="btn btn-xs btn-success">✓</button>
+            </form>
+          </td>
+          <td>${{ item.subtotal }}</td>
+          <td>
+            <button class="btn btn-xs btn-ghost text-error"
+                    hx-delete="/admin/carts/{{ cart.id }}/items/{{ item.id }}/delete/"
+                    hx-target="#cart-card-{{ cart.id }}"
+                    hx-swap="outerHTML">✕</button>
+          </td>
+        </tr>
+        {% empty %}
+          <tr><td colspan="4" class="text-center text-base-content/50 text-xs">No items yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Total -->
+    <div class="flex justify-end mt-2">
+      <span class="font-bold text-sm">Total: ${{ cart.total }}</span>
+    </div>
+
+    <!-- Add item form -->
+    <form hx-post="/admin/carts/{{ cart.id }}/items/add/"
+          hx-target="#cart-card-{{ cart.id }}"
+          hx-swap="outerHTML"
+          hx-on::after-request="this.reset()"
+          class="flex flex-wrap gap-2 items-end mt-3 pt-3 border-t border-base-200">
+      {% csrf_token %}
+      <label class="form-control">
+        <span class="label-text text-xs">Fruit</span>
+        <select name="fruit" class="select select-bordered select-xs">
+          {% for f in fruits %}
+            <option value="{{ f.id }}">{{ f.name }} (${{ f.price_per_kg }}/kg)</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="form-control">
+        <span class="label-text text-xs">Qty (kg)</span>
+        <input name="quantity_kg" type="number" step="0.001" min="0.001"
+               class="input input-bordered input-xs w-24" value="1.000" />
+      </label>
+      <button class="btn btn-xs btn-primary">Add Item</button>
+    </form>
+
+  </div>
+</div>
+{% endif %}

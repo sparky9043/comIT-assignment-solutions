@@ -1,0 +1,33 @@
+{% extends "store/base.html" %}
+{% block title %} — Manage Carts{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+  <h1 class="text-3xl font-bold">All Carts</h1>
+  <div class="tabs tabs-boxed">
+    <a class="tab" href="/admin-dash/">Fruits</a>
+    <a class="tab tab-active">Carts</a>
+  </div>
+</div>
+
+<!-- Create cart button -->
+<div class="mb-6">
+  <!--
+    hx-post   : create a new cart
+    hx-target : prepend the new cart card into the grid
+  -->
+  <button class="btn btn-primary"
+          hx-post="/admin/carts/create/"
+          hx-target="#carts-grid"
+          hx-swap="afterbegin">
+    + New Cart
+  </button>
+</div>
+
+<!-- Carts grid -->
+<div id="carts-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  {% for cart in carts %}
+    {% include "store/admin/carts/_cart_card.html" %}
+  {% endfor %}
+</div>
+{% endblock %}

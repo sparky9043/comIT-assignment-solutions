@@ -1,0 +1,60 @@
+{% extends "store/base.html" %}
+{% block title %} — Manage Fruits{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+  <h1 class="text-3xl font-bold">Fruits</h1>
+  <div class="tabs tabs-boxed">
+    <a class="tab tab-active">Fruits</a>
+    <a class="tab" href="/admin/carts/">Carts</a>
+  </div>
+</div>
+
+<!-- Inline create form -->
+<div class="card bg-base-100 shadow mb-6">
+  <div class="card-body">
+    <h2 class="card-title text-lg">Add New Fruit</h2>
+    <!--
+      hx-post     : POST to create endpoint
+      hx-target   : where to inject the response (the table body)
+      hx-swap     : prepend the new row at the top
+    -->
+    <form hx-post="/admin/fruits/create/"
+          hx-target="#fruit-tbody"
+          hx-swap="beforeend"
+          hx-on::after-request="this.reset()"
+          class="flex flex-wrap gap-3 items-end">
+      {% csrf_token %}
+      <label class="form-control">
+        <span class="label-text">Name</span>
+        <input name="name" class="input input-bordered input-sm" required />
+      </label>
+      <label class="form-control">
+        <span class="label-text">Weight (kg)</span>
+        <input name="weight_kg" type="number" step="0.001" class="input input-bordered input-sm w-32" required />
+      </label>
+      <label class="form-control">
+        <span class="label-text">Price / kg</span>
+        <input name="price_per_kg" type="number" step="0.01" class="input input-bordered input-sm w-32" required />
+      </label>
+      <button class="btn btn-primary btn-sm">Add Fruit</button>
+    </form>
+  </div>
+</div>
+
+<!-- Fruits table -->
+<div class="card bg-base-100 shadow overflow-x-auto">
+  <table class="table table-zebra">
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Weight (kg)</th><th>Price / kg</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="fruit-tbody">
+      {% for fruit in fruits %}
+        {% include "store/admin/fruits/_row.html" %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

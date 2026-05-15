@@ -1,0 +1,59 @@
+{% extends "store/base.html" %}
+{% block title %} — My Cart{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">My Shopping Carts 🛒</h1>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+  <!-- Left: Fruit catalogue (read-only) -->
+  <div class="xl:col-span-1">
+    <div class="card bg-base-100 shadow">
+      <div class="card-body p-4">
+        <h2 class="card-title text-lg mb-2">🍓 Available Fruits</h2>
+        <div class="overflow-y-auto max-h-[60vh]">
+          <table class="table table-xs">
+            <thead><tr><th>Fruit</th><th>$/kg</th></tr></thead>
+            <tbody>
+              {% for f in fruits %}
+              <tr>
+                <td>{{ f.name }}</td>
+                <td>${{ f.price_per_kg }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Customer carts -->
+  <div class="xl:col-span-2">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold">My Carts</h2>
+      <!--
+        hx-post   : create a new cart for this customer
+        hx-target : prepend new cart card into the carts grid
+      -->
+      <button class="btn btn-primary btn-sm"
+              hx-post="/customer/carts/create/"
+              hx-target="#my-carts"
+              hx-swap="afterbegin">
+        + New Cart
+      </button>
+    </div>
+
+    <div id="my-carts" class="flex flex-col gap-4">
+      {% for cart in carts %}
+        {% include "store/customer/carts/_cart_card.html" %}
+      {% empty %}
+        <div class="text-center text-base-content/50 py-12">
+          No carts yet. Create one to start shopping!
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
