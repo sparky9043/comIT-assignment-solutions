@@ -1,0 +1,113 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+
+<!-- Add-Todo Button -->
+<div class="flex justify-end mb-4">
+  <a href="{% url 'todo_create' %}"
+     class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700
+            text-white font-semibold py-2.5 px-6 rounded-xl shadow-md
+            transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+    <span class="text-xl leading-none">+</span> New Task
+  </a>
+</div>
+
+<!-- Stats Bar -->
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+  <!-- Progress bar track -->
+  <div class="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden mb-3">
+    <div class="h-full bg-emerald-400 rounded-full transition-all duration-500"
+         style="width: {% if todos|length > 0 %}{% widthratio completed_count todos|length 100 %}{% else %}0{% endif %}%;"></div>
+  </div>
+  <!-- Labels -->
+  <div class="flex justify-between text-sm">
+    <span class="text-gray-500">
+      <span class="font-semibold text-gray-700">{{ todos|length }}</span> task{{ todos|length|pluralize }}
+    </span>
+    <span class="text-gray-500">
+      <span class="font-semibold text-emerald-600">{{ completed_count }}</span> completed ·
+      <span class="font-semibold text-indigo-600">{{ pending_count }}</span> pending
+    </span>
+  </div>
+</div>
+
+<!-- Todo Cards -->
+{% if todos %}
+  {% for todo in todos %}
+  <div class="todo-card mb-3" style="animation-delay: {{ forloop.counter0 }}00ms;">
+    <div class="flex items-start gap-3 bg-white rounded-2xl shadow-sm
+                border border-gray-100 p-4 transition-all duration-200
+                hover:shadow-md {% if todo.completed %} opacity-60 {% endif %}">
+
+      <!-- Checkbox (toggle link) -->
+      <a href="{% url 'todo_toggle' todo.pk %}"
+         class="mt-1 flex-shrink-0 w-6 h-6 rounded-lg border-2
+                {% if todo.completed %}
+                  border-emerald-400 bg-emerald-400 flex items-center justify-center
+                {% else %}
+                  border-gray-300 hover:border-indigo-400
+                {% endif %}
+                transition-colors duration-200">
+        {% if todo.completed %}
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+               stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M5 13l4 4L19 7" />
+          </svg>
+        {% endif %}
+      </a>
+
+      <!-- Content -->
+      <div class="flex-1 min-w-0">
+        <h3 class="text-base font-semibold text-gray-800
+                   {% if todo.completed %} line-through text-gray-400 {% endif %}">
+          {{ todo.title }}
+        </h3>
+        {% if todo.description %}
+          <p class="text-sm text-gray-500 mt-0.5 truncate">{{ todo.description }}</p>
+        {% endif %}
+        <p class="text-xs text-gray-400 mt-1">
+          Added {{ todo.created_at|date:"M j, Y" }}
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a href="{% url 'todo_update' todo.pk %}"
+           class="text-gray-400 hover:text-indigo-500 transition-colors duration-200">
+          <!-- Pencil icon -->
+          <svg class="w-5 h-5" fill="none" stroke="currentColor"
+               stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        </a>
+        <a href="{% url 'todo_delete' todo.pk %}"
+           class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+          <!-- Trash icon -->
+          <svg class="w-5 h-5" fill="none" stroke="currentColor"
+               stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+
+{% else %}
+  <!-- Empty State -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
+    <div class="text-6xl mb-4">🎉</div>
+    <p class="text-gray-500 text-lg font-medium">No tasks yet!</p>
+    <p class="text-gray-400 text-sm mt-1">
+      <a href="{% url 'todo_create' %}" class="text-indigo-500 hover:underline">
+        Create your first task
+      </a>
+    </p>
+  </div>
+{% endif %}
+
+{% endblock %}

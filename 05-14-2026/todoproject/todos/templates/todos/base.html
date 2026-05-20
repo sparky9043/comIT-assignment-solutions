@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do List</title>
+
+  <!-- Tailwind CSS via CDN (swap to PostCSS build in production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Subtle animated gradient background */
+    @keyframes gradientShift {
+      0%   { background-position: 0%   50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0%   50%; }
+    }
+    body {
+      background: linear-gradient(135deg, #eef2ff, #fdf2f8, #ede9fe);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    /* Smooth fade-in for todo cards */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .todo-card {
+      animation: fadeInUp 0.3s ease both;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-start justify-center py-14 px-4">
+
+  <div class="w-full max-w-2xl">
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-5xl font-extrabold text-gray-800 tracking-tight">
+        ✅ My To-Do List
+      </h1>
+      <p class="text-gray-500 mt-2 text-lg">Stay organised, stay on top.</p>
+    </div>
+
+    <!-- Page content injected here -->
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>
