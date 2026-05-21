@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}My Timers{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between mb-8">
+  <h1 class="text-3xl font-bold">My Timers</h1>
+
+  <!-- Create Timer Modal Trigger -->
+  <button class="btn btn-primary"
+          onclick="document.getElementById('create_modal').showModal()">
+    + New Timer
+  </button>
+</div>
+
+<!-- Create Timer Modal (DaisyUI dialog) -->
+<dialog id="create_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Create New Timer</h3>
+    <form hx-post="{% url 'timers:create' %}"
+          hx-target="#timer-list"
+          hx-swap="afterbegin"
+          hx-on::after-request="this.reset(); document.getElementById('create_modal').close()">
+      {% csrf_token %}
+      <div class="form-control mb-4">
+        <label class="label"><span class="label-text">Timer Name</span></label>
+        <input type="text"
+               name="name"
+               placeholder="e.g. Morning Run"
+               class="input input-bordered w-full"
+               maxlength="100" />
+      </div>
+      <div class="modal-action">
+        <button type="button"
+                class="btn btn-ghost"
+                onclick="document.getElementById('create_modal').close()">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+  <!-- Click outside to close -->
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<!-- Timer Grid -->
+<div id="timer-list"
+     class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  {% for timer in timers %}
+    {% include 'timers/partials/timer_card.html' %}
+  {% empty %}
+    <div class="col-span-full text-center py-20 text-base-content/40">
+      <p class="text-5xl mb-4">⏱</p>
+      <p class="text-xl">No timers yet. Create your first one!</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

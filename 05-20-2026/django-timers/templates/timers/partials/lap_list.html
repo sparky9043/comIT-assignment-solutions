@@ -1,0 +1,11 @@
+{% if timer.laps.all %}
+  <div class="divider text-xs text-base-content/40">Laps</div>
+  <ul class="space-y-1 max-h-40 overflow-y-auto">
+    {% for lap in timer.laps.all %}
+      <li class="flex justify-between items-center text-sm bg-base-200 rounded px-3 py-1">
+        <span class="text-base-content/60 font-medium">Lap {{ lap.lap_number }}</span>
+        <span class="font-mono font-semibold">{{ lap.formatted_time }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
