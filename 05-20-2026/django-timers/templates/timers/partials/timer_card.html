@@ -24,7 +24,7 @@
          this.stopTicking();
        }
      }"
-     x-init="init()">
+     >
 
   <div class="card-body gap-4">
 
@@ -93,7 +93,8 @@
               x-show="!running"
               hx-post="{% url 'timers:start' timer.pk %}"
               hx-target="#timer-{{ timer.pk }}"
-              hx-swap="outerHTML">
+              hx-swap="outerHTML"
+              hx-on::before-request="stopTicking()">
         ▶ Start
       </button>
 
@@ -102,7 +103,8 @@
               x-show="running"
               hx-post="{% url 'timers:stop' timer.pk %}"
               hx-target="#timer-{{ timer.pk }}"
-              hx-swap="outerHTML">
+              hx-swap="outerHTML"
+              hx-on::before-request="stopTicking()">
         ⏸ Stop
       </button>
 
