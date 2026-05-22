@@ -99,6 +99,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "myproject", "templates"),
+            "templates",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -196,7 +197,9 @@ SITE_ID = 1
 # A base template is part of this setup
 # https://docs.django-cms.org/en/release-5.0.x/reference/configuration.html#cms-templates
 
-CMS_TEMPLATES = (("base.html", _("Standard")),)
+CMS_TEMPLATES = [
+    ("home.html", "Home page template"),
+]
 
 # Enable permissions
 # https://docs.django-cms.org/en/release-5.0.x/topics/permissions.html
